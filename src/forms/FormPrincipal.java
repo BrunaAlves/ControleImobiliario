@@ -45,6 +45,9 @@ public class FormPrincipal extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu2 = new javax.swing.JMenu();
+        jMenuItemCadCliente = new javax.swing.JMenuItem();
+        jMenuItemCadImovel = new javax.swing.JMenuItem();
         jMenuConsultas = new javax.swing.JMenu();
         jMenuItemConsuClientes = new javax.swing.JMenuItem();
         jMenuItemConsuImovel = new javax.swing.JMenuItem();
@@ -69,6 +72,21 @@ public class FormPrincipal extends javax.swing.JFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/logo.png"))); // NOI18N
         jPanel1.add(jLabel1, java.awt.BorderLayout.CENTER);
+
+        jMenu2.setText("Cadastros");
+
+        jMenuItemCadCliente.setText("Cliente");
+        jMenuItemCadCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemCadClienteActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItemCadCliente);
+
+        jMenuItemCadImovel.setText("Imóvel");
+        jMenu2.add(jMenuItemCadImovel);
+
+        jMenuBar1.add(jMenu2);
 
         jMenuConsultas.setText("Consultas");
 
@@ -140,6 +158,10 @@ public class FormPrincipal extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jMenuItemConsuImovelActionPerformed
 
+    private void jMenuItemCadClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCadClienteActionPerformed
+        new FormCliente().setVisible(true);
+    }//GEN-LAST:event_jMenuItemCadClienteActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -180,8 +202,11 @@ public class FormPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu Venda;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu jMenuConsultas;
+    private javax.swing.JMenuItem jMenuItemCadCliente;
+    private javax.swing.JMenuItem jMenuItemCadImovel;
     private javax.swing.JMenuItem jMenuItemConsuClientes;
     private javax.swing.JMenuItem jMenuItemConsuImovel;
     private javax.swing.JMenuItem jMenuItemSuporteAjuda;
