@@ -5,7 +5,7 @@
  */
 package classes;
 
-import classes.Endereco;
+import classes.Imovel;
 
 
 /**
@@ -18,7 +18,7 @@ public class Cliente {
     private String estadocivil;
     private String telefone;
     private String email;
-    private Endereco endereco;
+    private Imovel endereco;
 
     public Cliente(String cpf, String nome, String estadocivil, String telefone, String email) {
         this.cpf = cpf;
@@ -29,7 +29,7 @@ public class Cliente {
     }
 
     public Cliente() {
-        endereco = new Endereco();
+        endereco = new Imovel();
     }
 
     public String getCpf() {
@@ -72,11 +72,11 @@ public class Cliente {
         this.email = email;
     }
 
-    public Endereco getEndereco() {
+    public Imovel getEndereco() {
         return endereco;
     }
 
-    public void setEndereco(Endereco endereco) {
+    public void setEndereco(Imovel endereco) {
         this.endereco = endereco;
     }
     
