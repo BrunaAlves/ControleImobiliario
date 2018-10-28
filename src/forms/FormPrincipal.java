@@ -14,6 +14,8 @@ try{
 package forms;
 
 import dao.ClienteDAO;
+import dao.ImovelAluguelDAO;
+import dao.ImovelVendaDAO;
 /**
  *
  * @author alunoces
@@ -21,6 +23,8 @@ import dao.ClienteDAO;
 public class FormPrincipal extends javax.swing.JFrame {
 
     public static ClienteDAO daoCliente = null;
+    public static ImovelAluguelDAO daoAluguelImovel = null;
+    public static ImovelVendaDAO daoVendaImovel = null;
 
     /**
      * Creates new form FormPrincipal
@@ -30,6 +34,8 @@ public class FormPrincipal extends javax.swing.JFrame {
         this.setExtendedState(this.MAXIMIZED_BOTH);
         
         daoCliente = new ClienteDAO();
+        daoAluguelImovel = new ImovelAluguelDAO();
+        daoVendaImovel = new ImovelVendaDAO();
 
     }
 
@@ -47,10 +53,12 @@ public class FormPrincipal extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu2 = new javax.swing.JMenu();
         jMenuItemCadCliente = new javax.swing.JMenuItem();
-        jMenuItemCadImovel = new javax.swing.JMenuItem();
+        jMenuItemCadImovelAluguel = new javax.swing.JMenuItem();
+        jMenuItemCadImovelVenda = new javax.swing.JMenuItem();
         jMenuConsultas = new javax.swing.JMenu();
         jMenuItemConsuClientes = new javax.swing.JMenuItem();
-        jMenuItemConsuImovel = new javax.swing.JMenuItem();
+        jMenuItemConsuImovelAluguel = new javax.swing.JMenuItem();
+        jMenuItemConsuImovelVenda = new javax.swing.JMenuItem();
         Venda = new javax.swing.JMenu();
         jMenuItemVendaNovaVenda = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
@@ -83,8 +91,11 @@ public class FormPrincipal extends javax.swing.JFrame {
         });
         jMenu2.add(jMenuItemCadCliente);
 
-        jMenuItemCadImovel.setText("Imóvel");
-        jMenu2.add(jMenuItemCadImovel);
+        jMenuItemCadImovelAluguel.setText("Imóvel Aluguel");
+        jMenu2.add(jMenuItemCadImovelAluguel);
+
+        jMenuItemCadImovelVenda.setText("Imóvel Venda");
+        jMenu2.add(jMenuItemCadImovelVenda);
 
         jMenuBar1.add(jMenu2);
 
@@ -98,13 +109,16 @@ public class FormPrincipal extends javax.swing.JFrame {
         });
         jMenuConsultas.add(jMenuItemConsuClientes);
 
-        jMenuItemConsuImovel.setText("Imóveis");
-        jMenuItemConsuImovel.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItemConsuImovelAluguel.setText("Imóveis Aluguel");
+        jMenuItemConsuImovelAluguel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemConsuImovelActionPerformed(evt);
+                jMenuItemConsuImovelAluguelActionPerformed(evt);
             }
         });
-        jMenuConsultas.add(jMenuItemConsuImovel);
+        jMenuConsultas.add(jMenuItemConsuImovelAluguel);
+
+        jMenuItemConsuImovelVenda.setText("Imóveis Venda");
+        jMenuConsultas.add(jMenuItemConsuImovelVenda);
 
         jMenuBar1.add(jMenuConsultas);
 
@@ -154,9 +168,9 @@ public class FormPrincipal extends javax.swing.JFrame {
         new FormBuscarCliente().setVisible(true);
     }//GEN-LAST:event_jMenuItemConsuClientesActionPerformed
 
-    private void jMenuItemConsuImovelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemConsuImovelActionPerformed
+    private void jMenuItemConsuImovelAluguelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemConsuImovelAluguelActionPerformed
 
-    }//GEN-LAST:event_jMenuItemConsuImovelActionPerformed
+    }//GEN-LAST:event_jMenuItemConsuImovelAluguelActionPerformed
 
     private void jMenuItemCadClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCadClienteActionPerformed
         new FormCliente().setVisible(true);
@@ -206,9 +220,11 @@ public class FormPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu jMenuConsultas;
     private javax.swing.JMenuItem jMenuItemCadCliente;
-    private javax.swing.JMenuItem jMenuItemCadImovel;
+    private javax.swing.JMenuItem jMenuItemCadImovelAluguel;
+    private javax.swing.JMenuItem jMenuItemCadImovelVenda;
     private javax.swing.JMenuItem jMenuItemConsuClientes;
-    private javax.swing.JMenuItem jMenuItemConsuImovel;
+    private javax.swing.JMenuItem jMenuItemConsuImovelAluguel;
+    private javax.swing.JMenuItem jMenuItemConsuImovelVenda;
     private javax.swing.JMenuItem jMenuItemSuporteAjuda;
     private javax.swing.JMenuItem jMenuItemSuporteSobre;
     private javax.swing.JMenuItem jMenuItemVendaNovaVenda;

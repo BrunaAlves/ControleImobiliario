@@ -11,14 +11,12 @@ package classes;
  */
 public class ImovelVenda extends Imovel {
     public float valorVenda;
-    public boolean financia;
     public float valorParcela;
     public int quantidadeParcelas;
 
-    public ImovelVenda(float valorVenda, boolean financia, float valorParcela, int quantidadeParcelas, int id, String logradouro, String complemento, String cidade, String bairro, String estado, int numero, String cep, String descricao, int quartos, int suites, int vagasGaragem, int banheiros, float areaUtil, float areaTotal, boolean particular, String Imobiliaria) {
-        super(id, logradouro, complemento, cidade, bairro, estado, numero, cep, descricao, quartos, suites, vagasGaragem, banheiros, areaUtil, areaTotal, particular, Imobiliaria);
+    public ImovelVenda(float valorVenda, float valorParcela, int quantidadeParcelas, String logradouro, String complemento, String cidade, String bairro, String estado, int numero, String cep, float area, int quartos, int suites, int vagasGaragem, int banheiros) {
+        super(logradouro, complemento, cidade, bairro, estado, numero, cep, area, quartos, suites, vagasGaragem, banheiros);
         this.valorVenda = valorVenda;
-        this.financia = financia;
         this.valorParcela = valorParcela;
         this.quantidadeParcelas = quantidadeParcelas;
     }
@@ -32,14 +30,6 @@ public class ImovelVenda extends Imovel {
 
     public void setValorVenda(float valorVenda) {
         this.valorVenda = valorVenda;
-    }
-
-    public boolean isFinancia() {
-        return financia;
-    }
-
-    public void setFinancia(boolean financia) {
-        this.financia = financia;
     }
 
     public float getValorParcela() {

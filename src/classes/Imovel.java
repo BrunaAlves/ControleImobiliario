@@ -10,7 +10,7 @@ package classes;
  * @author Mazio
  */
 public class Imovel {
-    private int id;
+    private static int id;
     private String logradouro;
     private String complemento;
     private String cidade;
@@ -18,18 +18,14 @@ public class Imovel {
     private String estado;
     private int numero;
     private String cep;
-    private String descricao;
+    private float area;
     private int quartos;
     private int suites;
     private int vagasGaragem;
     private int banheiros;
-    private float areaUtil;
-    private float areaTotal;
-    public boolean particular;
-    public String Imobiliaria;
 
-    public Imovel(int id, String logradouro, String complemento, String cidade, String bairro, String estado, int numero, String cep, String descricao, int quartos, int suites, int vagasGaragem, int banheiros, float areaUtil, float areaTotal, boolean particular, String Imobiliaria) {
-        this.id = id;
+    public Imovel(String logradouro, String complemento, String cidade, String bairro, String estado, int numero, String cep, float area, int quartos, int suites, int vagasGaragem, int banheiros) {
+        Imovel.id += 1;
         this.logradouro = logradouro;
         this.complemento = complemento;
         this.cidade = cidade;
@@ -37,15 +33,11 @@ public class Imovel {
         this.estado = estado;
         this.numero = numero;
         this.cep = cep;
-        this.descricao = descricao;
+        this.area = area;
         this.quartos = quartos;
         this.suites = suites;
         this.vagasGaragem = vagasGaragem;
         this.banheiros = banheiros;
-        this.areaUtil = areaUtil;
-        this.areaTotal = areaTotal;
-        this.particular = particular;
-        this.Imobiliaria = Imobiliaria;
     }
 
     public Imovel() {
@@ -115,12 +107,12 @@ public class Imovel {
         this.cep = cep;
     }
 
-    public String getDescricao() {
-        return descricao;
+    public float getArea() {
+        return area;
     }
 
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
+    public void setArea(float area) {
+        this.area = area;
     }
 
     public int getQuartos() {
@@ -153,37 +145,5 @@ public class Imovel {
 
     public void setBanheiros(int banheiros) {
         this.banheiros = banheiros;
-    }
-
-    public float getAreaUtil() {
-        return areaUtil;
-    }
-
-    public void setAreaUtil(float areaUtil) {
-        this.areaUtil = areaUtil;
-    }
-
-    public float getAreaTotal() {
-        return areaTotal;
-    }
-
-    public void setAreaTotal(float areaTotal) {
-        this.areaTotal = areaTotal;
-    }
-
-    public boolean isParticular() {
-        return particular;
-    }
-
-    public void setParticular(boolean particular) {
-        this.particular = particular;
-    }
-
-    public String getImobiliaria() {
-        return Imobiliaria;
-    }
-
-    public void setImobiliaria(String Imobiliaria) {
-        this.Imobiliaria = Imobiliaria;
     }
 }

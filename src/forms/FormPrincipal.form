@@ -17,9 +17,14 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemCadClienteActionPerformed"/>
               </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItemCadImovel">
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItemCadImovelAluguel">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Im&#xf3;vel"/>
+                <Property name="text" type="java.lang.String" value="Im&#xf3;vel Aluguel"/>
+              </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItemCadImovelVenda">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Im&#xf3;vel Venda"/>
               </Properties>
             </MenuItem>
           </SubComponents>
@@ -37,13 +42,18 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemConsuClientesActionPerformed"/>
               </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItemConsuImovel">
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItemConsuImovelAluguel">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Im&#xf3;veis"/>
+                <Property name="text" type="java.lang.String" value="Im&#xf3;veis Aluguel"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemConsuImovelActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemConsuImovelAluguelActionPerformed"/>
               </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItemConsuImovelVenda">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Im&#xf3;veis Venda"/>
+              </Properties>
             </MenuItem>
           </SubComponents>
         </Menu>
