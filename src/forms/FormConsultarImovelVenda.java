@@ -35,6 +35,7 @@ public class FormConsultarImovelVenda extends javax.swing.JFrame {
         btEditar = new javax.swing.JButton();
         btExcluir = new javax.swing.JButton();
         btSair = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -101,6 +102,9 @@ public class FormConsultarImovelVenda extends javax.swing.JFrame {
         btSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/icSairImovel.png"))); // NOI18N
         btSair.setText("Sair");
 
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/icVendaImovel2.png"))); // NOI18N
+        jButton1.setText("Realizar Venda");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -118,10 +122,12 @@ public class FormConsultarImovelVenda extends javax.swing.JFrame {
                                 .addComponent(btBuscarImovelA)))
                         .addContainerGap(635, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
+                        .addComponent(jButton1)
+                        .addGap(173, 173, 173)
                         .addComponent(btEditar)
-                        .addGap(116, 116, 116)
-                        .addComponent(btExcluir)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btExcluir)
+                        .addGap(96, 96, 96)
                         .addComponent(btSair)
                         .addGap(51, 51, 51))))
         );
@@ -140,7 +146,8 @@ public class FormConsultarImovelVenda extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btEditar)
                     .addComponent(btExcluir)
-                    .addComponent(btSair))
+                    .addComponent(btSair)
+                    .addComponent(jButton1))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -194,6 +201,7 @@ public class FormConsultarImovelVenda extends javax.swing.JFrame {
     private javax.swing.JButton btEditar;
     private javax.swing.JButton btExcluir;
     private javax.swing.JButton btSair;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tImovelAluguel;
