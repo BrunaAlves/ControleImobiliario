@@ -165,7 +165,7 @@ public class FormPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItemConsuClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemConsuClientesActionPerformed
-        new FormBuscarCliente().setVisible(true);
+        new FormConsultaCliente().setVisible(true);
     }//GEN-LAST:event_jMenuItemConsuClientesActionPerformed
 
     private void jMenuItemConsuImovelAluguelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemConsuImovelAluguelActionPerformed
