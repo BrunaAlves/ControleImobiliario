@@ -9,12 +9,12 @@ package forms;
  *
  * @author bruna
  */
-public class FormConsultarAluguel extends javax.swing.JFrame {
+public class FormConsultarImovelAluguel extends javax.swing.JFrame {
 
     /**
      * Creates new form FormConsultarAluguel
      */
-    public FormConsultarAluguel() {
+    public FormConsultarImovelAluguel() {
         initComponents();
     }
 
@@ -163,20 +163,21 @@ public class FormConsultarAluguel extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FormConsultarAluguel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormConsultarImovelAluguel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FormConsultarAluguel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormConsultarImovelAluguel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FormConsultarAluguel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormConsultarImovelAluguel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FormConsultarAluguel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormConsultarImovelAluguel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FormConsultarAluguel().setVisible(true);
+                new FormConsultarImovelAluguel().setVisible(true);
             }
         });
     }
