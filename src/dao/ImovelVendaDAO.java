@@ -42,9 +42,20 @@ public class ImovelVendaDAO {
         ImovelVenda imv = null;
         for(ImovelVenda imovel: lista){
             if(imovel.getId() == id) {
+                imv = imovel;
             }
         }
         return imv;
+    }
+    
+    public List<ImovelVenda> buscarImovelPorTipo(String tipo){
+        List<ImovelVenda> imoveis = new ArrayList<>();
+        for(ImovelVenda imovel: lista){
+            if(imovel.getTipo().contains(tipo)) {
+                imoveis.add(imovel);
+            }
+        }
+        return imoveis;
     }
     
     public List<ImovelVenda> todosImoveis(){

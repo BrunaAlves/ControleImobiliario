@@ -41,9 +41,20 @@ public class ImovelAluguelDAO {
         ImovelAluguel imv = null;
         for(ImovelAluguel imovel: lista){
             if(imovel.getId() == id) {
+                imv = imovel;
             }
         }
         return imv;
+    }
+    
+    public List<ImovelAluguel> buscarImovelPorTipo(String tipo){
+        List<ImovelAluguel> imoveis = new ArrayList<>();
+        for(ImovelAluguel imovel: lista){
+            if(imovel.getTipo().contains(tipo)) {
+                imoveis.add(imovel);
+            }
+        }
+        return imoveis;
     }
     
     public List<ImovelAluguel> todosImoveis(){

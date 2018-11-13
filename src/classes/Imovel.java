@@ -23,9 +23,9 @@ public class Imovel {
     private int suites;
     private int vagasGaragem;
     private int banheiros;
+    private String tipo;
 
-    public Imovel(String logradouro, String complemento, String cidade, String bairro, String estado, int numero, String cep, float area, int quartos, int suites, int vagasGaragem, int banheiros) {
-        Imovel.id += 1;
+    public Imovel(String logradouro, String complemento, String cidade, String bairro, String estado, int numero, String cep, float area, int quartos, int suites, int vagasGaragem, int banheiros, String tipo) {
         this.logradouro = logradouro;
         this.complemento = complemento;
         this.cidade = cidade;
@@ -38,17 +38,18 @@ public class Imovel {
         this.suites = suites;
         this.vagasGaragem = vagasGaragem;
         this.banheiros = banheiros;
+        this.tipo = tipo;
     }
 
     public Imovel() {
     }
 
-    public int getId() {
+    public static int getId() {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public static void setId(int id) {
+        Imovel.id = id;
     }
 
     public String getLogradouro() {
@@ -146,4 +147,13 @@ public class Imovel {
     public void setBanheiros(int banheiros) {
         this.banheiros = banheiros;
     }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
 }

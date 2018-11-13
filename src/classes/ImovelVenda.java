@@ -14,13 +14,13 @@ public class ImovelVenda extends Imovel {
     public float valorParcela;
     public int quantidadeParcelas;
 
-    public ImovelVenda(float valorVenda, float valorParcela, int quantidadeParcelas, String logradouro, String complemento, String cidade, String bairro, String estado, int numero, String cep, float area, int quartos, int suites, int vagasGaragem, int banheiros) {
-        super(logradouro, complemento, cidade, bairro, estado, numero, cep, area, quartos, suites, vagasGaragem, banheiros);
+    public ImovelVenda(float valorVenda, float valorParcela, int quantidadeParcelas, String logradouro, String complemento, String cidade, String bairro, String estado, int numero, String cep, float area, int quartos, int suites, int vagasGaragem, int banheiros, String tipo) {
+        super(logradouro, complemento, cidade, bairro, estado, numero, cep, area, quartos, suites, vagasGaragem, banheiros, tipo);
         this.valorVenda = valorVenda;
         this.valorParcela = valorParcela;
         this.quantidadeParcelas = quantidadeParcelas;
     }
-         
+
     public ImovelVenda() {
     }
 

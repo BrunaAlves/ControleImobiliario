@@ -14,6 +14,7 @@ import javax.swing.JOptionPane;
  */
 public class FormImovelAluguel extends javax.swing.JFrame {
 
+    public ImovelAluguel imovel = null;
     /**
      * Creates new form FormImovelAluguel
      */

@@ -48,10 +48,7 @@ public class FormConsultarImovelVenda extends javax.swing.JFrame {
 
         tImovelAluguel.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null}
+
             },
             new String [] {
                 "Tipo", "Area", "Quartos", "Suítes", "Banheiro", "Garagens", "Endereço", "Valor Total", "Valor Parcela", "Qtd Parcela"
