@@ -15,6 +15,7 @@ import javax.swing.JOptionPane;
 public class FormImovelAluguel extends javax.swing.JFrame {
 
     public ImovelAluguel imovel = null;
+
     /**
      * Creates new form FormImovelAluguel
      */
@@ -73,9 +74,15 @@ public class FormImovelAluguel extends javax.swing.JFrame {
         btAtualizar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         btnSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/icSalvarImovel.png"))); // NOI18N
         btnSalvar.setText("Salvar");
+        btnSalvar.setEnabled(false);
         btnSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSalvarActionPerformed(evt);
@@ -84,6 +91,11 @@ public class FormImovelAluguel extends javax.swing.JFrame {
 
         btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/icCancelImovel.png"))); // NOI18N
         btnCancelar.setText("Cancelar");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel1.setText("CÓDIGO:");
@@ -166,7 +178,7 @@ public class FormImovelAluguel extends javax.swing.JFrame {
                             .addComponent(txtSuites, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblSuites)))
                     .addComponent(txtPrazoContrato, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(54, Short.MAX_VALUE))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
         pDadosImovelLayout.setVerticalGroup(
             pDadosImovelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -301,9 +313,20 @@ public class FormImovelAluguel extends javax.swing.JFrame {
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/icSairImovel.png"))); // NOI18N
         jButton1.setText("Sair");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         btAtualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/icEditarImovel.png"))); // NOI18N
         btAtualizar.setText("Atualizar");
+        btAtualizar.setEnabled(false);
+        btAtualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btAtualizarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -359,7 +382,7 @@ public class FormImovelAluguel extends javax.swing.JFrame {
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         ImovelAluguel imovel = new ImovelAluguel();
 
-        //pegar os dados do imóvel da tela e inserir no objeto
+        imovel.setTipo(jComboBox1.getActionCommand());
         imovel.setArea(Float.parseFloat(txtArea.getText()));
         imovel.setBairro(txtBairro.getText());
         imovel.setBanheiros(Integer.parseInt(txtBanheiros.getText()));
@@ -372,8 +395,6 @@ public class FormImovelAluguel extends javax.swing.JFrame {
         imovel.setQuartos(Integer.parseInt(txtQuartos.getText()));
         imovel.setSuites(Integer.parseInt(txtSuites.getText()));
         imovel.setVagasGaragem(Integer.parseInt(txtVagasGaragem.getText()));
-        
-        //pegar os dados do aluguel da tela e inserir no objeto
         imovel.setValorAluguel(Float.parseFloat(txtValorAluguel.getText()));
         imovel.setPrazoContrato(Integer.parseInt(txtValorAluguel.getText()));
 
@@ -387,6 +408,74 @@ public class FormImovelAluguel extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtAreaActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void btAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAtualizarActionPerformed
+                ImovelAluguel imovel = new ImovelAluguel();
+
+        imovel.setTipo(jComboBox1.getActionCommand());
+        imovel.setArea(Float.parseFloat(txtArea.getText()));
+        imovel.setBairro(txtBairro.getText());
+        imovel.setBanheiros(Integer.parseInt(txtBanheiros.getText()));
+        imovel.setCep(txtCep.getText());
+        imovel.setCidade(txtCidade.getText());
+        imovel.setComplemento(txtComplemento.getText());
+        imovel.setEstado(cbEstado.getActionCommand());
+        imovel.setLogradouro(txtLogradouro.getText());
+        imovel.setNumero(Integer.parseInt(txtNumero.getText()));
+        imovel.setQuartos(Integer.parseInt(txtQuartos.getText()));
+        imovel.setSuites(Integer.parseInt(txtSuites.getText()));
+        imovel.setVagasGaragem(Integer.parseInt(txtVagasGaragem.getText()));
+        imovel.setValorAluguel(Float.parseFloat(txtValorAluguel.getText()));
+        imovel.setPrazoContrato(Integer.parseInt(txtValorAluguel.getText()));
+
+        FormPrincipal.daoAluguelImovel.alterarImovel(imovel);
+        JOptionPane.showMessageDialog(null, "Imóvel para locação atualizado com sucesso!", "Cadastro de imóvel para aluguel", JOptionPane.INFORMATION_MESSAGE);
+
+        limpar();
+    }//GEN-LAST:event_btAtualizarActionPerformed
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        limpar();
+    }//GEN-LAST:event_btnCancelarActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        if (imovel != null) {
+            btAtualizar.setEnabled(true);
+            btnSalvar.setEnabled(false);
+            
+            txtArea.setText(Float.toString(imovel.getArea()));
+            txtBairro.setText(imovel.getBairro());
+            txtBanheiros.setText(Integer.toString(imovel.getBanheiros()));
+            txtCep.setText(imovel.getCep());
+            txtCidade.setText(imovel.getCidade());
+            txtComplemento.setText(imovel.getComplemento());
+            txtLogradouro.setText(imovel.getLogradouro());
+            txtNumero.setText(Integer.toString(imovel.getNumero()));
+            txtQuartos.setText(Integer.toString(imovel.getQuartos()));
+            txtSuites.setText(Integer.toString(imovel.getSuites()));
+            txtVagasGaragem.setText(Integer.toString(imovel.getVagasGaragem()));
+            txtValorAluguel.setText(Float.toString(imovel.getValorAluguel()));
+            txtPrazoContrato.setText(Integer.toString(imovel.getPrazoContrato()));
+            for (int i = 0; i < jComboBox1.getItemCount(); i++) {
+                if (jComboBox1.getItemAt(i).equals(imovel.getTipo())) {
+                    jComboBox1.setSelectedIndex(i);
+                }
+            }
+
+            for (int i = 0; i < cbEstado.getItemCount(); i++) {
+                if (cbEstado.getItemAt(i).equals(imovel.getEstado())) {
+                    cbEstado.setSelectedIndex(i);
+                }
+            }
+        } else {
+            btnSalvar.setEnabled(true);
+            btAtualizar.setEnabled(false);
+        }
+    }//GEN-LAST:event_formWindowOpened
+
     private void limpar() {
         txtArea.setText("");
         txtBairro.setText("");
@@ -394,13 +483,13 @@ public class FormImovelAluguel extends javax.swing.JFrame {
         txtCep.setText("");
         txtCidade.setText("");
         txtComplemento.setText("");
+        jComboBox1.setSelectedIndex(-1);
         cbEstado.setSelectedIndex(-1);
         txtLogradouro.setText("");
         txtNumero.setText("");
         txtQuartos.setText("");
         txtSuites.setText("");
         txtVagasGaragem.setText("");
-        
         txtValorAluguel.setText("");
         txtPrazoContrato.setText("");
     }

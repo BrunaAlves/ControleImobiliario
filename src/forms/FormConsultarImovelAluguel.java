@@ -138,6 +138,11 @@ public class FormConsultarImovelAluguel extends javax.swing.JFrame {
         btnAluguel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/icAluguelImovel.png"))); // NOI18N
         btnAluguel.setText("Realizar Aluguel");
         btnAluguel.setEnabled(false);
+        btnAluguel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAluguelActionPerformed(evt);
+            }
+        });
 
         ckTodos.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         ckTodos.setText("Buscar Todos");
@@ -250,10 +255,10 @@ public class FormConsultarImovelAluguel extends javax.swing.JFrame {
     }//GEN-LAST:event_btSairActionPerformed
 
     private void btEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditarActionPerformed
-        ImovelAluguel livro = getImovel();
+        ImovelAluguel imovel = getImovel();
         FormImovelAluguel frm = new FormImovelAluguel();
         frm.setVisible(true);
-        frm.imovel = livro;
+        frm.imovel = imovel;
         this.dispose();
     }//GEN-LAST:event_btEditarActionPerformed
 
@@ -262,6 +267,14 @@ public class FormConsultarImovelAluguel extends javax.swing.JFrame {
         FormPrincipal.daoAluguelImovel.removerImovel(imovel.getId());
         modelo.removeRow(tImovelAluguel.getSelectedRow());
     }//GEN-LAST:event_btExcluirActionPerformed
+
+    private void btnAluguelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAluguelActionPerformed
+        ImovelAluguel imovel = getImovel();
+        RealizarAluguel frm = new RealizarAluguel();
+        frm.setVisible(true);
+        frm.imovel = imovel;
+        this.dispose();
+    }//GEN-LAST:event_btnAluguelActionPerformed
 
     private void incluirImovelTabela(ImovelAluguel imovel) {
         modelo.addRow(new Object[]{imovel.getId(), imovel.getTipo(), imovel.getArea(), imovel.getQuartos(), imovel.getSuites(), imovel.getBanheiros(),
