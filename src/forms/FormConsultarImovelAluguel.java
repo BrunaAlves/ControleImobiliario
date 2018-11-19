@@ -94,14 +94,11 @@ public class FormConsultarImovelAluguel extends javax.swing.JFrame {
             tImovelAluguel.getColumnModel().getColumn(0).setPreferredWidth(120);
             tImovelAluguel.getColumnModel().getColumn(1).setPreferredWidth(50);
             tImovelAluguel.getColumnModel().getColumn(2).setPreferredWidth(50);
-            tImovelAluguel.getColumnModel().getColumn(3).setResizable(false);
             tImovelAluguel.getColumnModel().getColumn(3).setPreferredWidth(50);
             tImovelAluguel.getColumnModel().getColumn(4).setPreferredWidth(50);
             tImovelAluguel.getColumnModel().getColumn(5).setPreferredWidth(50);
             tImovelAluguel.getColumnModel().getColumn(6).setPreferredWidth(200);
-            tImovelAluguel.getColumnModel().getColumn(7).setResizable(false);
             tImovelAluguel.getColumnModel().getColumn(7).setPreferredWidth(100);
-            tImovelAluguel.getColumnModel().getColumn(8).setResizable(false);
             tImovelAluguel.getColumnModel().getColumn(8).setPreferredWidth(100);
         }
 
@@ -224,7 +221,7 @@ public class FormConsultarImovelAluguel extends javax.swing.JFrame {
                         incluirImovelTabela(ia);
                     }
                 } else {
-                    JOptionPane.showMessageDialog(null, "Livro não encontrado!", "Atenção!", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Imóvel não encontrado!", "Atenção!", JOptionPane.ERROR_MESSAGE);
                 }
             } else {
                 JOptionPane.showMessageDialog(null, "Favor preencher o Tipo do Imóvel!", "Atenção!", JOptionPane.ERROR_MESSAGE);

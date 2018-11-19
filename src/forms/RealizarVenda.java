@@ -5,6 +5,7 @@
  */
 package forms;
 import classes.Cliente;
+import classes.ImovelVenda;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 /**
@@ -13,6 +14,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class RealizarVenda extends javax.swing.JFrame {
 
+    public ImovelVenda imovel = null;
     /**
      * Creates new form RealizarVenda
      */

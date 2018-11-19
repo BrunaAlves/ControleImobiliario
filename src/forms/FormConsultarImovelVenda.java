@@ -5,17 +5,25 @@
  */
 package forms;
 
+import classes.ImovelVenda;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author bruna
  */
 public class FormConsultarImovelVenda extends javax.swing.JFrame {
 
+    DefaultTableModel modelo;
+
     /**
      * Creates new form FormConsultarAluguel
      */
     public FormConsultarImovelVenda() {
         initComponents();
+        this.modelo = (DefaultTableModel) tImovelAluguel.getModel();
     }
 
     /**
@@ -27,38 +35,32 @@ public class FormConsultarImovelVenda extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        tfCodigo = new javax.swing.JTextField();
-        btBuscarImovelA = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tImovelAluguel = new javax.swing.JTable();
         btEditar = new javax.swing.JButton();
         btExcluir = new javax.swing.JButton();
         btSair = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        ckTodos = new javax.swing.JCheckBox();
+        lblTipo = new javax.swing.JLabel();
+        txtTipo = new javax.swing.JTextField();
+        btBuscarImovelA = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel1.setText("CÓDIGO:");
-
-        btBuscarImovelA.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        btBuscarImovelA.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/icBuscarImovel2.png"))); // NOI18N
-        btBuscarImovelA.setText("Buscar Imóvel");
 
         tImovelAluguel.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Tipo", "Area", "Quartos", "Suítes", "Banheiro", "Garagens", "Endereço", "Valor Total", "Valor Parcela", "Qtd Parcela"
+                "Codigo", "Tipo", "Area", "Quartos", "Suítes", "Banheiro", "Garagens", "Endereço", "Valor Total", "Valor Parcela", "Qtd Parcela"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.Float.class, java.lang.Float.class, java.lang.Object.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.Float.class, java.lang.Float.class, java.lang.Object.class
             };
             boolean[] canEdit = new boolean [] {
-                true, true, true, true, true, true, false, false, true, true
+                false, false, false, false, false, false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -70,37 +72,82 @@ public class FormConsultarImovelVenda extends javax.swing.JFrame {
             }
         });
         tImovelAluguel.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
+        tImovelAluguel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tImovelAluguelMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tImovelAluguel);
         if (tImovelAluguel.getColumnModel().getColumnCount() > 0) {
-            tImovelAluguel.getColumnModel().getColumn(0).setPreferredWidth(120);
-            tImovelAluguel.getColumnModel().getColumn(1).setPreferredWidth(50);
+            tImovelAluguel.getColumnModel().getColumn(1).setPreferredWidth(120);
             tImovelAluguel.getColumnModel().getColumn(2).setPreferredWidth(50);
-            tImovelAluguel.getColumnModel().getColumn(3).setResizable(false);
             tImovelAluguel.getColumnModel().getColumn(3).setPreferredWidth(50);
             tImovelAluguel.getColumnModel().getColumn(4).setPreferredWidth(50);
             tImovelAluguel.getColumnModel().getColumn(5).setPreferredWidth(50);
-            tImovelAluguel.getColumnModel().getColumn(6).setPreferredWidth(200);
-            tImovelAluguel.getColumnModel().getColumn(7).setResizable(false);
-            tImovelAluguel.getColumnModel().getColumn(7).setPreferredWidth(100);
-            tImovelAluguel.getColumnModel().getColumn(8).setResizable(false);
+            tImovelAluguel.getColumnModel().getColumn(6).setPreferredWidth(50);
+            tImovelAluguel.getColumnModel().getColumn(7).setPreferredWidth(200);
             tImovelAluguel.getColumnModel().getColumn(8).setPreferredWidth(100);
             tImovelAluguel.getColumnModel().getColumn(9).setPreferredWidth(100);
+            tImovelAluguel.getColumnModel().getColumn(10).setPreferredWidth(100);
         }
 
         btEditar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/icEditarImovel.png"))); // NOI18N
         btEditar.setText("Editar");
+        btEditar.setEnabled(false);
+        btEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btEditarActionPerformed(evt);
+            }
+        });
 
         btExcluir.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/icDeletarImovel.png"))); // NOI18N
         btExcluir.setText("Excluir");
+        btExcluir.setEnabled(false);
+        btExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btExcluirActionPerformed(evt);
+            }
+        });
 
         btSair.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/icSairImovel.png"))); // NOI18N
         btSair.setText("Sair");
+        btSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btSairActionPerformed(evt);
+            }
+        });
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/icVendaImovel2.png"))); // NOI18N
         jButton1.setText("Realizar Venda");
+        jButton1.setEnabled(false);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        ckTodos.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        ckTodos.setText("Buscar Todos");
+        ckTodos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ckTodosActionPerformed(evt);
+            }
+        });
+
+        lblTipo.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        lblTipo.setText("Tipo");
+
+        btBuscarImovelA.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btBuscarImovelA.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/icBuscarImovel2.png"))); // NOI18N
+        btBuscarImovelA.setText("Buscar Imóvel");
+        btBuscarImovelA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btBuscarImovelAActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -111,33 +158,36 @@ public class FormConsultarImovelVenda extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(tfCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(29, 29, 29)
-                                .addComponent(btBuscarImovelA)))
-                        .addContainerGap(635, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
                         .addComponent(jButton1)
                         .addGap(173, 173, 173)
                         .addComponent(btEditar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 90, Short.MAX_VALUE)
                         .addComponent(btExcluir)
                         .addGap(96, 96, 96)
                         .addComponent(btSair)
-                        .addGap(51, 51, 51))))
+                        .addGap(51, 51, 51))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblTipo)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(txtTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btBuscarImovelA)
+                                .addGap(167, 167, 167)
+                                .addComponent(ckTodos)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addComponent(jLabel1)
+                .addContainerGap()
+                .addComponent(lblTipo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tfCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btBuscarImovelA))
-                .addGap(18, 18, 18)
+                    .addComponent(txtTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btBuscarImovelA)
+                    .addComponent(ckTodos, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(29, 29, 29)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(36, 36, 36)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -151,6 +201,95 @@ public class FormConsultarImovelVenda extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void ckTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ckTodosActionPerformed
+        // habilitando e desabilitando o campo de codigo com a seleção da busca de todos
+        if (ckTodos.isSelected()) {
+            txtTipo.setEnabled(false);
+        } else {
+            txtTipo.setEnabled(true);
+            txtTipo.requestFocus();
+            txtTipo.setText("");
+        }
+    }//GEN-LAST:event_ckTodosActionPerformed
+
+    private void btBuscarImovelAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBuscarImovelAActionPerformed
+        limparTabela();
+
+        if (ckTodos.isSelected()) {
+            List<ImovelVenda> lista = FormPrincipal.daoVendaImovel.todosImoveis();
+            for (ImovelVenda ia : lista) {
+                incluirImovelTabela(ia);
+            }
+        } else // buscar um só
+        {
+            if (txtTipo.getText().trim().length() != 0) //verifica-se se o codigo foi digitado
+            {
+                List<ImovelVenda> imoveis = FormPrincipal.daoVendaImovel.buscarImovelPorTipo(txtTipo.getText());
+                if (imoveis != null && imoveis.size() > 0) {
+                    for (ImovelVenda ia : imoveis) {
+                        incluirImovelTabela(ia);
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "Imóvel não encontrado!", "Atenção!", JOptionPane.ERROR_MESSAGE);
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Favor preencher o Tipo do Imóvel!", "Atenção!", JOptionPane.ERROR_MESSAGE);
+                txtTipo.requestFocus();
+            }
+        }
+    }//GEN-LAST:event_btBuscarImovelAActionPerformed
+
+    private void btEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditarActionPerformed
+        ImovelVenda imovel = getImovel();
+        FormImovelVenda frm = new FormImovelVenda();
+        frm.setVisible(true);
+        frm.imovel = imovel;
+        this.dispose();
+    }//GEN-LAST:event_btEditarActionPerformed
+
+    private void btExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExcluirActionPerformed
+        ImovelVenda imovel = getImovel();
+        FormPrincipal.daoVendaImovel.removerImovel(imovel.getId());
+        modelo.removeRow(tImovelAluguel.getSelectedRow());
+    }//GEN-LAST:event_btExcluirActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        ImovelVenda imovel = getImovel();
+        RealizarVenda frm = new RealizarVenda();
+        frm.setVisible(true);
+        frm.imovel = imovel;
+        this.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void btSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btSairActionPerformed
+
+    private void tImovelAluguelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tImovelAluguelMouseClicked
+        btEditar.setEnabled(true);
+        btExcluir.setEnabled(true);
+        jButton1.setEnabled(true);
+    }//GEN-LAST:event_tImovelAluguelMouseClicked
+
+    private void incluirImovelTabela(ImovelVenda imovel) {
+        modelo.addRow(new Object[]{imovel.getId(), imovel.getTipo(), imovel.getArea(), imovel.getQuartos(), imovel.getSuites(), imovel.getBanheiros(),
+            imovel.getVagasGaragem(), imovel.getLogradouro(), imovel.valorVenda, imovel.valorParcela, imovel.quantidadeParcelas});
+    }
+
+    private void limparTabela() {
+        for (int i = tImovelAluguel.getRowCount() - 1; i >= 0; --i) {
+            modelo.removeRow(i);
+        }
+    }
+
+    private ImovelVenda getImovel() {
+        ImovelVenda imovel = new ImovelVenda();
+        int linha = tImovelAluguel.getSelectedRow();
+        imovel = FormPrincipal.daoVendaImovel.buscarImovel((Integer) modelo.getValueAt(linha, 0));
+
+        return imovel;
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -198,10 +337,11 @@ public class FormConsultarImovelVenda extends javax.swing.JFrame {
     private javax.swing.JButton btEditar;
     private javax.swing.JButton btExcluir;
     private javax.swing.JButton btSair;
+    private javax.swing.JCheckBox ckTodos;
     private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblTipo;
     private javax.swing.JTable tImovelAluguel;
-    private javax.swing.JTextField tfCodigo;
+    private javax.swing.JTextField txtTipo;
     // End of variables declaration//GEN-END:variables
 }
