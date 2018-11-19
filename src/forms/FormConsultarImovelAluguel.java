@@ -46,7 +46,7 @@ public class FormConsultarImovelAluguel extends javax.swing.JFrame {
         btnAluguel = new javax.swing.JButton();
         ckTodos = new javax.swing.JCheckBox();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         lblTipo.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lblTipo.setText("Tipo");

@@ -46,7 +46,7 @@ public class FormConsultarImovelVenda extends javax.swing.JFrame {
         txtTipo = new javax.swing.JTextField();
         btBuscarImovelA = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         tImovelAluguel.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
