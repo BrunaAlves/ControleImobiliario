@@ -435,10 +435,10 @@ public class FormImovelVenda extends javax.swing.JFrame {
         imovel.setSuites(Integer.parseInt(txtSuites.getText()));
         imovel.setVagasGaragem(Integer.parseInt(txtVagasGaragem.getText()));
         imovel.setValorVenda(Float.parseFloat(txtValorTotal.getText()));
-        imovel.setValorParcela(Integer.parseInt(txtValorParcela.getText()));
+        imovel.setValorParcela(Float.parseFloat(txtValorParcela.getText()));
         imovel.setQuantidadeParcelas(Integer.parseInt(txtNumeroParcelas.getText()));
 
-        FormPrincipal.daoVendaImovel.alterarImovel(imovel);
+        FormPrincipal.daoVendaImovel.adicionarImovel(imovel);
         JOptionPane.showMessageDialog(null, "Imóvel para venda cadastrado com sucesso!", "Cadastro de imóvel para venda", JOptionPane.INFORMATION_MESSAGE);
 
         limpar();
@@ -465,7 +465,7 @@ public class FormImovelVenda extends javax.swing.JFrame {
         imovel.setSuites(Integer.parseInt(txtSuites.getText()));
         imovel.setVagasGaragem(Integer.parseInt(txtVagasGaragem.getText()));
         imovel.setValorVenda(Float.parseFloat(txtValorTotal.getText()));
-        imovel.setValorParcela(Integer.parseInt(txtValorParcela.getText()));
+        imovel.setValorParcela(Float.parseFloat(txtValorParcela.getText()));
         imovel.setQuantidadeParcelas(Integer.parseInt(txtNumeroParcelas.getText()));
 
         FormPrincipal.daoVendaImovel.alterarImovel(imovel);
