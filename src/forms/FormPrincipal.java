@@ -22,9 +22,9 @@ import dao.ImovelVendaDAO;
  */
 public class FormPrincipal extends javax.swing.JFrame {
 
-    public static ClienteDAO daoCliente = null;
-    public static ImovelAluguelDAO daoAluguelImovel = null;
-    public static ImovelVendaDAO daoVendaImovel = null;
+    public static ClienteDAO daoCliente = new ClienteDAO();
+    public static ImovelAluguelDAO daoAluguelImovel = new ImovelAluguelDAO();
+    public static ImovelVendaDAO daoVendaImovel = new ImovelVendaDAO();
 
     /**
      * Creates new form FormPrincipal

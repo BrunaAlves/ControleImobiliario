@@ -14,7 +14,7 @@ import java.util.List;
  * @author Meu computador
  */
 public class ImovelAluguelDAO {
-    private List<ImovelAluguel> lista = null;
+    private ArrayList<ImovelAluguel> lista = null;
     
     public ImovelAluguelDAO() {
         lista = new ArrayList<ImovelAluguel>();

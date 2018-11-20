@@ -416,7 +416,7 @@ public class FormImovelAluguel extends javax.swing.JFrame {
         imovel.setSuites(Integer.parseInt(txtSuites.getText()));
         imovel.setVagasGaragem(Integer.parseInt(txtVagasGaragem.getText()));
         imovel.setValorAluguel(Float.parseFloat(txtValorAluguel.getText()));
-        imovel.setPrazoContrato(Integer.parseInt(txtValorAluguel.getText()));
+        imovel.setPrazoContrato(Integer.parseInt(txtPrazoContrato.getText()));
 
         FormPrincipal.daoAluguelImovel.adicionarImovel(imovel);
         JOptionPane.showMessageDialog(null, "Imóvel para locação cadastrado com sucesso!", "Cadastro de imóvel para aluguel", JOptionPane.INFORMATION_MESSAGE);
