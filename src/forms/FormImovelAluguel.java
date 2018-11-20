@@ -433,7 +433,7 @@ public class FormImovelAluguel extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAtualizarActionPerformed
-                ImovelAluguel imovel = new ImovelAluguel();
+        ImovelAluguel imovel = new ImovelAluguel();
 
         imovel.setTipo(jComboBox1.getActionCommand());
         imovel.setArea(Float.parseFloat(txtArea.getText()));
@@ -449,7 +449,7 @@ public class FormImovelAluguel extends javax.swing.JFrame {
         imovel.setSuites(Integer.parseInt(txtSuites.getText()));
         imovel.setVagasGaragem(Integer.parseInt(txtVagasGaragem.getText()));
         imovel.setValorAluguel(Float.parseFloat(txtValorAluguel.getText()));
-        imovel.setPrazoContrato(Integer.parseInt(txtValorAluguel.getText()));
+        imovel.setPrazoContrato(Integer.parseInt(txtPrazoContrato.getText()));
 
         FormPrincipal.daoAluguelImovel.alterarImovel(imovel);
         JOptionPane.showMessageDialog(null, "Imóvel para locação atualizado com sucesso!", "Cadastro de imóvel para aluguel", JOptionPane.INFORMATION_MESSAGE);
@@ -465,7 +465,7 @@ public class FormImovelAluguel extends javax.swing.JFrame {
         if (imovel != null) {
             btAtualizar.setEnabled(true);
             btnSalvar.setEnabled(false);
-            
+
             txtArea.setText(Float.toString(imovel.getArea()));
             txtBairro.setText(imovel.getBairro());
             txtBanheiros.setText(Integer.toString(imovel.getBanheiros()));
