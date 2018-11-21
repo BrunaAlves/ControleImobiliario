@@ -422,6 +422,7 @@ public class FormImovelAluguel extends javax.swing.JFrame {
         imovel.setValorAluguel(Float.parseFloat(txtValorAluguel.getText()));
         imovel.setPrazoContrato(Integer.parseInt(txtPrazoContrato.getText()));
         imovel.setCliente(cliente);
+        imovel.setDisponivel(true);
 
         FormPrincipal.daoAluguelImovel.adicionarImovel(imovel);
         JOptionPane.showMessageDialog(null, "Imóvel para locação cadastrado com sucesso!", "Cadastro de imóvel para aluguel", JOptionPane.INFORMATION_MESSAGE);
@@ -456,6 +457,7 @@ public class FormImovelAluguel extends javax.swing.JFrame {
         imovel.setValorAluguel(Float.parseFloat(txtValorAluguel.getText()));
         imovel.setPrazoContrato(Integer.parseInt(txtPrazoContrato.getText()));
         imovel.setCliente(cliente);
+        imovel.setDisponivel(true);
 
         FormPrincipal.daoAluguelImovel.alterarImovel(imovel);
         JOptionPane.showMessageDialog(null, "Imóvel para locação atualizado com sucesso!", "Cadastro de imóvel para aluguel", JOptionPane.INFORMATION_MESSAGE);

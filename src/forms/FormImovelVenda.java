@@ -442,6 +442,7 @@ public class FormImovelVenda extends javax.swing.JFrame {
         imovel.setValorParcela(Float.parseFloat(txtValorParcela.getText()));
         imovel.setQuantidadeParcelas(Integer.parseInt(txtNumeroParcelas.getText()));
         imovel.setCliente(cliente);
+        imovel.setDisponivel(true);
 
         FormPrincipal.daoVendaImovel.adicionarImovel(imovel);
         JOptionPane.showMessageDialog(null, "Imóvel para venda cadastrado com sucesso!", "Cadastro de imóvel para venda", JOptionPane.INFORMATION_MESSAGE);
@@ -473,6 +474,7 @@ public class FormImovelVenda extends javax.swing.JFrame {
         imovel.setValorParcela(Float.parseFloat(txtValorParcela.getText()));
         imovel.setQuantidadeParcelas(Integer.parseInt(txtNumeroParcelas.getText()));
         imovel.setCliente(cliente);
+        imovel.setDisponivel(true);
 
         FormPrincipal.daoVendaImovel.alterarImovel(imovel);
         JOptionPane.showMessageDialog(null, "Imóvel para venda atualizado com sucesso!", "Cadastro de imóvel para venda", JOptionPane.INFORMATION_MESSAGE);

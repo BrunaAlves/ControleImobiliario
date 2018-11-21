@@ -24,9 +24,10 @@ public class Imovel {
     private int vagasGaragem;
     private int banheiros;
     private String tipo;
+    private boolean disponivel;
     private Cliente cliente;
-    
-    public Imovel(String logradouro, String complemento, String cidade, String bairro, String estado, int numero, String cep, float area, int quartos, int suites, int vagasGaragem, int banheiros, String tipo, Cliente cliente) {
+
+    public Imovel(String logradouro, String complemento, String cidade, String bairro, String estado, int numero, String cep, float area, int quartos, int suites, int vagasGaragem, int banheiros, String tipo, boolean disponivel, Cliente cliente) {
         this.logradouro = logradouro;
         this.complemento = complemento;
         this.cidade = cidade;
@@ -40,6 +41,7 @@ public class Imovel {
         this.vagasGaragem = vagasGaragem;
         this.banheiros = banheiros;
         this.tipo = tipo;
+        this.disponivel = disponivel;
         this.cliente = cliente;
     }
     
@@ -164,5 +166,13 @@ public class Imovel {
 
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
+    }
+
+    public boolean isDisponivel() {
+        return disponivel;
+    }
+
+    public void setDisponivel(boolean disponivel) {
+        this.disponivel = disponivel;
     }
 }
