@@ -216,7 +216,7 @@ public class FormConsultarImovelVenda extends javax.swing.JFrame {
         limparTabela();
 
         if (ckTodos.isSelected()) {
-            List<ImovelVenda> lista = FormPrincipal.daoVendaImovel.todosImoveis();
+            List<ImovelVenda> lista = FormPrincipal.daoVendaImovel.todosImoveisDsiponiveis();
             for (ImovelVenda ia : lista) {
                 incluirImovelTabela(ia);
             }
@@ -224,7 +224,7 @@ public class FormConsultarImovelVenda extends javax.swing.JFrame {
         {
             if (txtTipo.getText().trim().length() != 0) //verifica-se se o codigo foi digitado
             {
-                List<ImovelVenda> imoveis = FormPrincipal.daoVendaImovel.buscarImovelPorTipo(txtTipo.getText());
+                List<ImovelVenda> imoveis = FormPrincipal.daoVendaImovel.buscarImovelDisponivelPorTipo(txtTipo.getText());
                 if (imoveis != null && imoveis.size() > 0) {
                     for (ImovelVenda ia : imoveis) {
                         incluirImovelTabela(ia);

@@ -9,56 +9,75 @@ import classes.ImovelAluguel;
 import classes.ImovelVenda;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Predicate;
 
 /**
  *
  * @author Meu computador
  */
 public class ImovelVendaDAO {
-        private List<ImovelVenda> lista = null;
-    
+
+    private List<ImovelVenda> lista = null;
+
     public ImovelVendaDAO() {
         lista = new ArrayList<ImovelVenda>();
     }
-    
-    public void adicionarImovel(ImovelVenda imovel){
-        lista.add(imovel);       
+
+    public void adicionarImovel(ImovelVenda imovel) {
+        lista.add(imovel);
     }
-    
-    public void removerImovel(int id){
+
+    public void removerImovel(int id) {
         ImovelVenda imovel = this.buscarImovel(id);
-        if(imovel != null){
+        if (imovel != null) {
             lista.remove(imovel);
         }
     }
-    
-   public void alterarImovel(ImovelVenda imovel){
+
+    public void alterarImovel(ImovelVenda imovel) {
         ImovelVenda imv = buscarImovel(imovel.getId());
         int ind = lista.indexOf(imv);
         lista.set(ind, imovel);
     }
-    
-    public ImovelVenda buscarImovel(int id){
+
+    public ImovelVenda buscarImovel(int id) {
         ImovelVenda imv = null;
-        for(ImovelVenda imovel: lista){
-            if(imovel.getId() == id) {
+        for (ImovelVenda imovel : lista) {
+            if (imovel.getId() == id) {
                 imv = imovel;
             }
         }
         return imv;
     }
-    
-    public List<ImovelVenda> buscarImovelPorTipo(String tipo){
+
+    public List<ImovelVenda> buscarImovelPorTipo(String tipo) {
         List<ImovelVenda> imoveis = new ArrayList<>();
-        for(ImovelVenda imovel: lista){
-            if(imovel.getTipo().contains(tipo)) {
+        for (ImovelVenda imovel : lista) {
+            if (imovel.getTipo().contains(tipo)) {
                 imoveis.add(imovel);
             }
         }
         return imoveis;
     }
-    
-    public List<ImovelVenda> todosImoveis(){
+
+    public List<ImovelVenda> buscarImovelDisponivelPorTipo(String tipo) {
+        List<ImovelVenda> imoveis = new ArrayList<>();
+        for (ImovelVenda imovel : lista) {
+            if (imovel.getTipo().contains(tipo) && imovel.isDisponivel()) {
+                imoveis.add(imovel);
+            }
+        }
+        return imoveis;
+    }
+
+    public List<ImovelVenda> todosImoveis() {
+        return lista;
+    }
+
+    public List<ImovelVenda> todosImoveisDsiponiveis() {
+        boolean disponivel = true;
+        Predicate<ImovelVenda> imovelPredicate = p -> p.isDisponivel() == disponivel;
+        lista.removeIf(imovelPredicate);
         return lista;
     }
 }

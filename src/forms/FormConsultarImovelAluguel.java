@@ -207,7 +207,7 @@ public class FormConsultarImovelAluguel extends javax.swing.JFrame {
         limparTabela();
 
         if (ckTodos.isSelected()) {
-            List<ImovelAluguel> lista = FormPrincipal.daoAluguelImovel.todosImoveis();
+            List<ImovelAluguel> lista = FormPrincipal.daoAluguelImovel.todosImoveisDsiponiveis();
             for (ImovelAluguel ia : lista) {
                 incluirImovelTabela(ia);
             }
@@ -215,7 +215,7 @@ public class FormConsultarImovelAluguel extends javax.swing.JFrame {
         {
             if (txtTipo.getText().trim().length() != 0) //verifica-se se o codigo foi digitado
             {
-                List<ImovelAluguel> imoveis = FormPrincipal.daoAluguelImovel.buscarImovelPorTipo(txtTipo.getText());
+                List<ImovelAluguel> imoveis = FormPrincipal.daoAluguelImovel.buscarImovelDisponivelPorTipo(txtTipo.getText());
                 if (imoveis != null && imoveis.size() > 0) {
                     for (ImovelAluguel ia : imoveis) {
                         incluirImovelTabela(ia);
