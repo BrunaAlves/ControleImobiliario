@@ -5,6 +5,7 @@
  */
 package forms;
 
+import classes.Cliente;
 import classes.ImovelAluguel;
 import classes.ImovelVenda;
 import javax.swing.JOptionPane;
@@ -16,6 +17,7 @@ import javax.swing.JOptionPane;
 public class FormImovelVenda extends javax.swing.JFrame {
 
     public ImovelVenda imovel = null;
+    public Cliente cliente = null;
 
     /**
      * Creates new form FormImovelAluguel
@@ -87,6 +89,7 @@ public class FormImovelVenda extends javax.swing.JFrame {
 
         btnSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/icSalvarImovel.png"))); // NOI18N
         btnSalvar.setText("Salvar");
+        btnSalvar.setEnabled(false);
         btnSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSalvarActionPerformed(evt);
@@ -239,7 +242,7 @@ public class FormImovelVenda extends javax.swing.JFrame {
                         .addComponent(lblNumeroParcelas)
                         .addGap(17, 17, 17)
                         .addComponent(txtNumeroParcelas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         tbDadosImovel.addTab("Dados do Imóvel", pDadosImovel);
@@ -349,11 +352,14 @@ public class FormImovelVenda extends javax.swing.JFrame {
 
         btAtualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/icEditarImovel.png"))); // NOI18N
         btAtualizar.setText("Atualizar");
+        btAtualizar.setEnabled(false);
         btAtualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btAtualizarActionPerformed(evt);
             }
         });
+
+        txrNomeProprietario.setEnabled(false);
 
         jLabel3.setText("Nome Proprietário");
 
@@ -362,35 +368,33 @@ public class FormImovelVenda extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btnSalvar)
-                .addGap(18, 18, 18)
-                .addComponent(btAtualizar)
-                .addGap(18, 18, 18)
-                .addComponent(btnCancelar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(25, 25, 25))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGap(22, 22, 22)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(tfCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(45, 45, 45)
-                                .addComponent(btBuscar))
-                            .addComponent(jLabel1))
-                        .addGap(103, 103, 103)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(txrNomeProprietario)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(tbDadosImovel, javax.swing.GroupLayout.PREFERRED_SIZE, 638, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(13, 13, 13))
+                        .addComponent(tfCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(48, 48, 48)
+                        .addComponent(btBuscar))
+                    .addComponent(jLabel1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txrNomeProprietario, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnSalvar)
+                        .addGap(18, 18, 18)
+                        .addComponent(btAtualizar)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnCancelar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton1)
+                        .addGap(25, 25, 25))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(tbDadosImovel, javax.swing.GroupLayout.PREFERRED_SIZE, 638, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(13, 13, 13))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -404,7 +408,7 @@ public class FormImovelVenda extends javax.swing.JFrame {
                     .addComponent(tfCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btBuscar)
                     .addComponent(txrNomeProprietario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(27, 27, 27)
                 .addComponent(tbDadosImovel)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -437,6 +441,7 @@ public class FormImovelVenda extends javax.swing.JFrame {
         imovel.setValorVenda(Float.parseFloat(txtValorTotal.getText()));
         imovel.setValorParcela(Float.parseFloat(txtValorParcela.getText()));
         imovel.setQuantidadeParcelas(Integer.parseInt(txtNumeroParcelas.getText()));
+        imovel.setCliente(cliente);
 
         FormPrincipal.daoVendaImovel.adicionarImovel(imovel);
         JOptionPane.showMessageDialog(null, "Imóvel para venda cadastrado com sucesso!", "Cadastro de imóvel para venda", JOptionPane.INFORMATION_MESSAGE);
@@ -467,6 +472,7 @@ public class FormImovelVenda extends javax.swing.JFrame {
         imovel.setValorVenda(Float.parseFloat(txtValorTotal.getText()));
         imovel.setValorParcela(Float.parseFloat(txtValorParcela.getText()));
         imovel.setQuantidadeParcelas(Integer.parseInt(txtNumeroParcelas.getText()));
+        imovel.setCliente(cliente);
 
         FormPrincipal.daoVendaImovel.alterarImovel(imovel);
         JOptionPane.showMessageDialog(null, "Imóvel para venda atualizado com sucesso!", "Cadastro de imóvel para venda", JOptionPane.INFORMATION_MESSAGE);
@@ -519,7 +525,14 @@ public class FormImovelVenda extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowOpened
 
     private void btBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBuscarActionPerformed
-        // TODO add your handling code here:
+        if (tfCodigo.getText() != "") {
+            cliente = FormPrincipal.daoCliente.buscarCliente(tfCodigo.getText());
+            if (cliente != null) {
+                txrNomeProprietario.setText(cliente.getNome());
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Informe um cpf válido para buscar o cliente!", "Cadastro de imóvel para venda", JOptionPane.INFORMATION_MESSAGE);
+        }
     }//GEN-LAST:event_btBuscarActionPerformed
 
     private void limpar() {

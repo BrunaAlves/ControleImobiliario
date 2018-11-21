@@ -24,8 +24,9 @@ public class Imovel {
     private int vagasGaragem;
     private int banheiros;
     private String tipo;
-
-    public Imovel(String logradouro, String complemento, String cidade, String bairro, String estado, int numero, String cep, float area, int quartos, int suites, int vagasGaragem, int banheiros, String tipo) {
+    private Cliente cliente;
+    
+    public Imovel(String logradouro, String complemento, String cidade, String bairro, String estado, int numero, String cep, float area, int quartos, int suites, int vagasGaragem, int banheiros, String tipo, Cliente cliente) {
         this.logradouro = logradouro;
         this.complemento = complemento;
         this.cidade = cidade;
@@ -39,11 +40,12 @@ public class Imovel {
         this.vagasGaragem = vagasGaragem;
         this.banheiros = banheiros;
         this.tipo = tipo;
+        this.cliente = cliente;
     }
-
+    
     public Imovel() {
     }
-
+    
     public static int getId() {
         return id;
     }
@@ -156,4 +158,11 @@ public class Imovel {
         this.tipo = tipo;
     }
 
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
 }

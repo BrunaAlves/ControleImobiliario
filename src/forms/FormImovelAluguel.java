@@ -5,6 +5,7 @@
  */
 package forms;
 
+import classes.Cliente;
 import classes.ImovelAluguel;
 import javax.swing.JOptionPane;
 
@@ -15,6 +16,7 @@ import javax.swing.JOptionPane;
 public class FormImovelAluguel extends javax.swing.JFrame {
 
     public ImovelAluguel imovel = null;
+    public Cliente cliente = null;
 
     /**
      * Creates new form FormImovelAluguel
@@ -335,6 +337,8 @@ public class FormImovelAluguel extends javax.swing.JFrame {
             }
         });
 
+        txrNomeProprietario.setEnabled(false);
+
         jLabel3.setText("Nome Proprietário");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -386,7 +390,7 @@ public class FormImovelAluguel extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txrNomeProprietario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
-                .addComponent(tbDadosImovel, javax.swing.GroupLayout.DEFAULT_SIZE, 252, Short.MAX_VALUE)
+                .addComponent(tbDadosImovel)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSalvar)
@@ -417,6 +421,7 @@ public class FormImovelAluguel extends javax.swing.JFrame {
         imovel.setVagasGaragem(Integer.parseInt(txtVagasGaragem.getText()));
         imovel.setValorAluguel(Float.parseFloat(txtValorAluguel.getText()));
         imovel.setPrazoContrato(Integer.parseInt(txtPrazoContrato.getText()));
+        imovel.setCliente(cliente);
 
         FormPrincipal.daoAluguelImovel.adicionarImovel(imovel);
         JOptionPane.showMessageDialog(null, "Imóvel para locação cadastrado com sucesso!", "Cadastro de imóvel para aluguel", JOptionPane.INFORMATION_MESSAGE);
@@ -450,6 +455,7 @@ public class FormImovelAluguel extends javax.swing.JFrame {
         imovel.setVagasGaragem(Integer.parseInt(txtVagasGaragem.getText()));
         imovel.setValorAluguel(Float.parseFloat(txtValorAluguel.getText()));
         imovel.setPrazoContrato(Integer.parseInt(txtPrazoContrato.getText()));
+        imovel.setCliente(cliente);
 
         FormPrincipal.daoAluguelImovel.alterarImovel(imovel);
         JOptionPane.showMessageDialog(null, "Imóvel para locação atualizado com sucesso!", "Cadastro de imóvel para aluguel", JOptionPane.INFORMATION_MESSAGE);
@@ -497,7 +503,14 @@ public class FormImovelAluguel extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowOpened
 
     private void btBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBuscarActionPerformed
-        // TODO add your handling code here:
+        if (tfCodigo.getText() != "") {
+            cliente = FormPrincipal.daoCliente.buscarCliente(tfCodigo.getText());
+            if (cliente != null) {
+                txrNomeProprietario.setText(cliente.getNome());
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Informe um cpf válido para buscar o cliente!", "Cadastro de imóvel para aluguel", JOptionPane.INFORMATION_MESSAGE);
+        }
     }//GEN-LAST:event_btBuscarActionPerformed
 
     private void limpar() {
