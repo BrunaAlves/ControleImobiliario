@@ -6,7 +6,6 @@
 package forms;
 
 import classes.Cliente;
-import classes.ImovelAluguel;
 import classes.ImovelVenda;
 import javax.swing.JOptionPane;
 

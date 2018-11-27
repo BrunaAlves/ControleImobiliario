@@ -7,7 +7,6 @@ package forms;
 
 import classes.Cliente;
 import java.util.Enumeration;
-import javax.swing.ButtonModel;
 import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
 

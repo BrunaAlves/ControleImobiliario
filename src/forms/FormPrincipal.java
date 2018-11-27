@@ -13,9 +13,11 @@ try{
  */
 package forms;
 
+import dao.AluguelDAO;
 import dao.ClienteDAO;
 import dao.ImovelAluguelDAO;
 import dao.ImovelVendaDAO;
+import dao.VendaDAO;
 /**
  *
  * @author alunoces
@@ -25,6 +27,8 @@ public class FormPrincipal extends javax.swing.JFrame {
     public static ClienteDAO daoCliente = new ClienteDAO();
     public static ImovelAluguelDAO daoAluguelImovel = new ImovelAluguelDAO();
     public static ImovelVendaDAO daoVendaImovel = new ImovelVendaDAO();
+    public static AluguelDAO daoAluguel = new AluguelDAO();
+    public static VendaDAO daoVenda = new VendaDAO();
 
     /**
      * Creates new form FormPrincipal
@@ -36,6 +40,8 @@ public class FormPrincipal extends javax.swing.JFrame {
         daoCliente = new ClienteDAO();
         daoAluguelImovel = new ImovelAluguelDAO();
         daoVendaImovel = new ImovelVendaDAO();
+        daoAluguel = new AluguelDAO();
+        daoVenda = new VendaDAO();
 
     }
 

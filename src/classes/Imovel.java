@@ -28,6 +28,7 @@ public class Imovel {
     private Cliente cliente;
 
     public Imovel(String logradouro, String complemento, String cidade, String bairro, String estado, int numero, String cep, float area, int quartos, int suites, int vagasGaragem, int banheiros, String tipo, boolean disponivel, Cliente cliente) {
+        this.id += 1;
         this.logradouro = logradouro;
         this.complemento = complemento;
         this.cidade = cidade;
@@ -50,10 +51,6 @@ public class Imovel {
     
     public static int getId() {
         return id;
-    }
-
-    public static void setId(int id) {
-        Imovel.id = id;
     }
 
     public String getLogradouro() {

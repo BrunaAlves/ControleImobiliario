@@ -273,7 +273,7 @@ public class FormConsultarImovelVenda extends javax.swing.JFrame {
 
     private void incluirImovelTabela(ImovelVenda imovel) {
         modelo.addRow(new Object[]{imovel.getId(), imovel.getTipo(), imovel.getArea(), imovel.getQuartos(), imovel.getSuites(), imovel.getBanheiros(),
-            imovel.getVagasGaragem(), imovel.getLogradouro(), imovel.valorVenda, imovel.valorParcela, imovel.quantidadeParcelas});
+            imovel.getVagasGaragem(), imovel.getLogradouro(), imovel.getValorVenda(), imovel.getValorParcela(), imovel.getQuantidadeParcelas()});
     }
 
     private void limparTabela() {

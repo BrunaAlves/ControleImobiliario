@@ -5,8 +5,6 @@
  */
 package classes;
 
-import classes.Imovel;
-
 
 /**
  *

@@ -5,7 +5,6 @@
  */
 package dao;
 
-import classes.ImovelAluguel;
 import classes.ImovelVenda;
 import java.util.ArrayList;
 import java.util.List;

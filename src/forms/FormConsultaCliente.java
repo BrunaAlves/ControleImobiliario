@@ -95,10 +95,7 @@ public class FormConsultaCliente extends javax.swing.JFrame {
 
         tClientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
+
             },
             new String [] {
                 "CPF", "Nome", "Email", "Telefone", "Estado Civil", "Endereço", "Cidade", "CEP"
@@ -107,14 +104,23 @@ public class FormConsultaCliente extends javax.swing.JFrame {
             Class[] types = new Class [] {
                 java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.String.class, java.lang.String.class
             };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false
+            };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
             }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
         });
         tClientes.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
+        tClientes.setColumnSelectionAllowed(true);
         tClientes.getTableHeader().setReorderingAllowed(false);
         jScrollPane2.setViewportView(tClientes);
+        tClientes.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         if (tClientes.getColumnModel().getColumnCount() > 0) {
             tClientes.getColumnModel().getColumn(0).setPreferredWidth(100);
             tClientes.getColumnModel().getColumn(1).setPreferredWidth(200);

@@ -4,10 +4,14 @@
  * and open the template in the editor.
  */
 package forms;
+
+import classes.Venda;
 import classes.Cliente;
 import classes.ImovelVenda;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author bruna
@@ -15,6 +19,9 @@ import javax.swing.table.DefaultTableModel;
 public class RealizarVenda extends javax.swing.JFrame {
 
     public ImovelVenda imovel = null;
+    public Cliente novoProprietario = null;
+    public Venda venda = null;
+
     /**
      * Creates new form RealizarVenda
      */
@@ -40,16 +47,13 @@ public class RealizarVenda extends javax.swing.JFrame {
         tfCpf = new javax.swing.JFormattedTextField();
         btBuscar = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
+        btConfirmar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
-        lbEnderecoCliente = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        lbTelefone = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         lbNome = new javax.swing.JLabel();
+        lbTelefone = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         lbEmail = new javax.swing.JLabel();
-        btConfirmar = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         lbTipo = new javax.swing.JLabel();
@@ -76,6 +80,11 @@ public class RealizarVenda extends javax.swing.JFrame {
         lbValorParcela = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jPanel1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
 
@@ -146,64 +155,50 @@ public class RealizarVenda extends javax.swing.JFrame {
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Dados do Cliente", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
         jPanel3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
 
-        jLabel2.setText("Nome do Cliente: ");
-
-        jLabel15.setText("Endereço Completo:");
-
-        lbEnderecoCliente.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        lbEnderecoCliente.setText("--");
-
-        jLabel3.setText("Telefone:");
-
-        lbTelefone.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        lbTelefone.setText("--");
-
-        jLabel4.setText("Nome do Cliente: ");
-
-        lbNome.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        lbNome.setForeground(new java.awt.Color(255, 102, 0));
-        lbNome.setText("--");
-
-        jLabel5.setText("E-mail de contato:");
-
-        lbEmail.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        lbEmail.setText("--");
-
         btConfirmar.setBackground(new java.awt.Color(255, 255, 255));
         btConfirmar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btConfirmar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/icConfirmarCliente.png"))); // NOI18N
         btConfirmar.setText("Confirmar");
+        btConfirmar.setEnabled(false);
         btConfirmar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btConfirmarActionPerformed(evt);
             }
         });
 
+        jLabel2.setText("Nome do Cliente: ");
+
+        lbNome.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lbNome.setForeground(new java.awt.Color(255, 102, 0));
+        lbNome.setText("--");
+
+        lbTelefone.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lbTelefone.setText("--");
+
+        jLabel3.setText("Telefone:");
+
+        jLabel5.setText("E-mail de contato:");
+
+        lbEmail.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lbEmail.setText("--");
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(4, 4, 4)
+                .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbNome, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
+                    .addComponent(lbNome, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel15)
-                    .addComponent(lbEnderecoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(7, 7, 7)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lbTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lbEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(btConfirmar, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -212,27 +207,24 @@ public class RealizarVenda extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(11, 11, 11)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel2))
-                        .addGap(6, 6, 6)
-                        .addComponent(lbNome, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel15)
-                        .addGap(6, 6, 6)
-                        .addComponent(lbEnderecoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel3))
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lbEmail, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(jLabel5)
+                                .addGap(26, 26, 26)))
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                                    .addGap(23, 23, 23)
+                                    .addComponent(lbTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel3Layout.createSequentialGroup()
+                                    .addComponent(jLabel3)
+                                    .addGap(26, 26, 26)))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(jLabel2)
                                 .addGap(6, 6, 6)
-                                .addComponent(lbEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(lbTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(lbNome, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addComponent(btConfirmar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
@@ -338,14 +330,31 @@ public class RealizarVenda extends javax.swing.JFrame {
         btFinalizarVenda.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btFinalizarVenda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/icFinalizarVenda.png"))); // NOI18N
         btFinalizarVenda.setText("Finalizar Venda");
+        btFinalizarVenda.setEnabled(false);
+        btFinalizarVenda.setFocusCycleRoot(true);
+        btFinalizarVenda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btFinalizarVendaActionPerformed(evt);
+            }
+        });
 
         btCancelar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/icCancelImovel.png"))); // NOI18N
         btCancelar.setText("Cancelar");
+        btCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btCancelarActionPerformed(evt);
+            }
+        });
 
         btSair.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/icSairImovel.png"))); // NOI18N
         btSair.setText("Sair");
+        btSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btSairActionPerformed(evt);
+            }
+        });
 
         jLabel16.setText("Valor Total da Venda:");
 
@@ -353,13 +362,15 @@ public class RealizarVenda extends javax.swing.JFrame {
 
         lbTotal.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lbTotal.setForeground(new java.awt.Color(255, 51, 0));
-        lbTotal.setText("R$ 00,0");
+        lbTotal.setText("R$ 0,00");
+
+        tfParcelas.setEnabled(false);
 
         jLabel18.setText("Valor da parcela:");
 
         lbValorParcela.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lbValorParcela.setForeground(new java.awt.Color(255, 51, 0));
-        lbValorParcela.setText("R$ 00,0");
+        lbValorParcela.setText("R$ 0,00");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -441,11 +452,76 @@ public class RealizarVenda extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBuscarActionPerformed
-        
+        btFinalizarVenda.setEnabled(false);
+
+        if (!tfCpf.getText().equals("")) {
+            novoProprietario = FormPrincipal.daoCliente.buscarCliente(tfCpf.getText());
+            if (novoProprietario != null) {
+                lbNome.setText(novoProprietario.getNome());
+                lbTelefone.setText(novoProprietario.getTelefone());
+                lbEmail.setText(novoProprietario.getEmail());
+                btConfirmar.setEnabled(true);
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Informe um cpf válido para buscar o cliente!", "Realizar Venda", JOptionPane.INFORMATION_MESSAGE);
+        }
     }//GEN-LAST:event_btBuscarActionPerformed
 
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        if (imovel != null) {
+            btBuscar.setEnabled(true);
+            btFinalizarVenda.setEnabled(false);
+            btConfirmar.setEnabled(false);
+
+            lbTipo.setText(imovel.getTipo());
+            lbArea.setText(Float.toString(imovel.getArea()));
+            lbQuartos.setText(Integer.toString(imovel.getQuartos()));
+            lbSuites.setText(Integer.toString(imovel.getSuites()));
+            lbBanheiros.setText(Integer.toString(imovel.getBanheiros()));
+            lbGaragem.setText(Integer.toString(imovel.getVagasGaragem()));
+            lbEnderecoImovel.setText(imovel.getLogradouro());
+            lbValorParcela.setText(Float.toString(imovel.getValorParcela()));
+            lbTotal.setText(Float.toString(imovel.getValorVenda()));
+            tfParcelas.setText(Integer.toString(imovel.getQuantidadeParcelas()));
+
+            venda = new Venda();
+            lbNumero.setText(Integer.toString(venda.getId()));
+            lbData.setText(new SimpleDateFormat("dd/mm/yyyy").format(new Date()));
+        } else {
+            btBuscar.setEnabled(false);
+            btFinalizarVenda.setEnabled(false);
+            btConfirmar.setEnabled(false);
+        }
+    }//GEN-LAST:event_formWindowOpened
+
+    private void btSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btSairActionPerformed
+
+    private void btFinalizarVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btFinalizarVendaActionPerformed
+        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+
+        try {
+            Date data = format.parse(lbData.getText());
+            venda.setImovel(imovel);
+            venda.setDataVenda(data);
+            venda.setNovoProprietario(novoProprietario);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Ocorreu um erro.", "Realizar Venda", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }//GEN-LAST:event_btFinalizarVendaActionPerformed
+
+    private void btCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCancelarActionPerformed
+        btFinalizarVenda.setEnabled(false);
+        btConfirmar.setEnabled(false);
+        lbNome.setText("--");
+        lbTelefone.setText("--");
+        lbEmail.setText("--");
+        tfCpf.setText("");
+    }//GEN-LAST:event_btCancelarActionPerformed
+
     private void btConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btConfirmarActionPerformed
-        
+        btFinalizarVenda.setEnabled(true);
     }//GEN-LAST:event_btConfirmarActionPerformed
 
     /**
@@ -495,13 +571,11 @@ public class RealizarVenda extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -514,7 +588,6 @@ public class RealizarVenda extends javax.swing.JFrame {
     private javax.swing.JLabel lbBanheiros;
     private javax.swing.JLabel lbData;
     private javax.swing.JLabel lbEmail;
-    private javax.swing.JLabel lbEnderecoCliente;
     private javax.swing.JLabel lbEnderecoImovel;
     private javax.swing.JLabel lbGaragem;
     private javax.swing.JLabel lbNome;

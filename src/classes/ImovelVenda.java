@@ -10,9 +10,9 @@ package classes;
  * @author Mazio
  */
 public class ImovelVenda extends Imovel {
-    public float valorVenda;
-    public float valorParcela;
-    public int quantidadeParcelas;
+    private float valorVenda;
+    private float valorParcela;
+    private int quantidadeParcelas;
 
     public ImovelVenda(float valorVenda, float valorParcela, int quantidadeParcelas, String logradouro, String complemento, String cidade, String bairro, String estado, int numero, String cep, float area, int quartos, int suites, int vagasGaragem, int banheiros, String tipo, boolean disponivel, Cliente cliente) {
         super(logradouro, complemento, cidade, bairro, estado, numero, cep, area, quartos, suites, vagasGaragem, banheiros, tipo, disponivel, cliente);

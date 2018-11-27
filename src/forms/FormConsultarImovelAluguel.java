@@ -84,12 +84,14 @@ public class FormConsultarImovelAluguel extends javax.swing.JFrame {
             }
         });
         tImovelAluguel.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
+        tImovelAluguel.setColumnSelectionAllowed(true);
         tImovelAluguel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tImovelAluguelMouseClicked(evt);
             }
         });
         jScrollPane1.setViewportView(tImovelAluguel);
+        tImovelAluguel.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         if (tImovelAluguel.getColumnModel().getColumnCount() > 0) {
             tImovelAluguel.getColumnModel().getColumn(0).setPreferredWidth(120);
             tImovelAluguel.getColumnModel().getColumn(1).setPreferredWidth(50);
@@ -275,7 +277,7 @@ public class FormConsultarImovelAluguel extends javax.swing.JFrame {
 
     private void incluirImovelTabela(ImovelAluguel imovel) {
         modelo.addRow(new Object[]{imovel.getId(), imovel.getTipo(), imovel.getArea(), imovel.getQuartos(), imovel.getSuites(), imovel.getBanheiros(),
-            imovel.getVagasGaragem(), imovel.getLogradouro(), imovel.valorAluguel, imovel.prazoContrato});
+            imovel.getVagasGaragem(), imovel.getLogradouro(), imovel.getValorAluguel(), imovel.getPrazoContrato()});
     }
 
     private void limparTabela() {
