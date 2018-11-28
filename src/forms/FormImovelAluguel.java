@@ -403,31 +403,80 @@ public class FormImovelAluguel extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    
+    private boolean valida(){
+        if(txtArea.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "Campo Area é obrigatório!", "Atenção", JOptionPane.WARNING_MESSAGE);
+            return false;
+        }
+        
+        if(txtBanheiros.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "Campo Banheiros é obrigatório!", "Atenção", JOptionPane.WARNING_MESSAGE);
+            return false;
+        }
+        
+        
+        if(txtNumero.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "Campo Numero é obrigatório!", "Atenção", JOptionPane.WARNING_MESSAGE);
+            return false;
+        }
+        
+        
+        if(txtQuartos.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "Campo Quartos é obrigatório!", "Atenção", JOptionPane.WARNING_MESSAGE);
+            return false;
+        }
+        if(txtSuites.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "Campo Suites é obrigatório!", "Atenção", JOptionPane.WARNING_MESSAGE);
+            return false;
+        }
+        if(txtVagasGaragem.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "Campo Vagas na Garagem é obrigatório!", "Atenção", JOptionPane.WARNING_MESSAGE);
+            return false;
+        }
+        if(txtValorAluguel.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "Campo Valor do Aluguel é obrigatório!", "Atenção", JOptionPane.WARNING_MESSAGE);
+            return false;
+        }
+        if(txtPrazoContrato.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "Campo Prazo do Contrato é obrigatório!", "Atenção", JOptionPane.WARNING_MESSAGE);
+            return false;
+        }
+        
+        
+        if(cliente == null){
+            JOptionPane.showMessageDialog(null, "Necessário selecioar um cliente antes de continuar!", "Atenção", JOptionPane.WARNING_MESSAGE);
+            return false;
+        }
+        return true;
+    }
+    
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-        ImovelAluguel imovel = new ImovelAluguel();
+        if(valida()){
+            ImovelAluguel imovel = new ImovelAluguel();
+            imovel.setTipo(jComboBox1.getActionCommand());
+            imovel.setArea(Float.parseFloat(txtArea.getText()));
+            imovel.setBairro(txtBairro.getText());
+            imovel.setBanheiros(Integer.parseInt(txtBanheiros.getText()));
+            imovel.setCep(txtCep.getText());
+            imovel.setCidade(txtCidade.getText());
+            imovel.setComplemento(txtComplemento.getText());
+            imovel.setEstado(cbEstado.getActionCommand());
+            imovel.setLogradouro(txtLogradouro.getText());
+            imovel.setNumero(Integer.parseInt(txtNumero.getText()));
+            imovel.setQuartos(Integer.parseInt(txtQuartos.getText()));
+            imovel.setSuites(Integer.parseInt(txtSuites.getText()));
+            imovel.setVagasGaragem(Integer.parseInt(txtVagasGaragem.getText()));
+            imovel.setValorAluguel(Float.parseFloat(txtValorAluguel.getText()));
+            imovel.setPrazoContrato(Integer.parseInt(txtPrazoContrato.getText()));
+            imovel.setCliente(cliente);
+            imovel.setDisponivel(true);
 
-        imovel.setTipo(jComboBox1.getActionCommand());
-        imovel.setArea(Float.parseFloat(txtArea.getText()));
-        imovel.setBairro(txtBairro.getText());
-        imovel.setBanheiros(Integer.parseInt(txtBanheiros.getText()));
-        imovel.setCep(txtCep.getText());
-        imovel.setCidade(txtCidade.getText());
-        imovel.setComplemento(txtComplemento.getText());
-        imovel.setEstado(cbEstado.getActionCommand());
-        imovel.setLogradouro(txtLogradouro.getText());
-        imovel.setNumero(Integer.parseInt(txtNumero.getText()));
-        imovel.setQuartos(Integer.parseInt(txtQuartos.getText()));
-        imovel.setSuites(Integer.parseInt(txtSuites.getText()));
-        imovel.setVagasGaragem(Integer.parseInt(txtVagasGaragem.getText()));
-        imovel.setValorAluguel(Float.parseFloat(txtValorAluguel.getText()));
-        imovel.setPrazoContrato(Integer.parseInt(txtPrazoContrato.getText()));
-        imovel.setCliente(cliente);
-        imovel.setDisponivel(true);
+            FormPrincipal.daoAluguelImovel.adicionarImovel(imovel);
+            JOptionPane.showMessageDialog(null, "Imóvel para locação cadastrado com sucesso!", "Cadastro de imóvel para aluguel", JOptionPane.INFORMATION_MESSAGE);
 
-        FormPrincipal.daoAluguelImovel.adicionarImovel(imovel);
-        JOptionPane.showMessageDialog(null, "Imóvel para locação cadastrado com sucesso!", "Cadastro de imóvel para aluguel", JOptionPane.INFORMATION_MESSAGE);
-
-        limpar();
+            limpar();
+        }
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void txtAreaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAreaActionPerformed
@@ -439,30 +488,33 @@ public class FormImovelAluguel extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAtualizarActionPerformed
-        ImovelAluguel imovel = new ImovelAluguel();
+        if(valida()){
+            ImovelAluguel imovel = new ImovelAluguel();
 
-        imovel.setTipo(jComboBox1.getActionCommand());
-        imovel.setArea(Float.parseFloat(txtArea.getText()));
-        imovel.setBairro(txtBairro.getText());
-        imovel.setBanheiros(Integer.parseInt(txtBanheiros.getText()));
-        imovel.setCep(txtCep.getText());
-        imovel.setCidade(txtCidade.getText());
-        imovel.setComplemento(txtComplemento.getText());
-        imovel.setEstado(cbEstado.getActionCommand());
-        imovel.setLogradouro(txtLogradouro.getText());
-        imovel.setNumero(Integer.parseInt(txtNumero.getText()));
-        imovel.setQuartos(Integer.parseInt(txtQuartos.getText()));
-        imovel.setSuites(Integer.parseInt(txtSuites.getText()));
-        imovel.setVagasGaragem(Integer.parseInt(txtVagasGaragem.getText()));
-        imovel.setValorAluguel(Float.parseFloat(txtValorAluguel.getText()));
-        imovel.setPrazoContrato(Integer.parseInt(txtPrazoContrato.getText()));
-        imovel.setCliente(cliente);
-        imovel.setDisponivel(true);
 
-        FormPrincipal.daoAluguelImovel.alterarImovel(imovel);
-        JOptionPane.showMessageDialog(null, "Imóvel para locação atualizado com sucesso!", "Cadastro de imóvel para aluguel", JOptionPane.INFORMATION_MESSAGE);
+            imovel.setTipo(jComboBox1.getActionCommand());
+            imovel.setArea(Float.parseFloat(txtArea.getText()));
+            imovel.setBairro(txtBairro.getText());
+            imovel.setBanheiros(Integer.parseInt(txtBanheiros.getText()));
+            imovel.setCep(txtCep.getText());
+            imovel.setCidade(txtCidade.getText());
+            imovel.setComplemento(txtComplemento.getText());
+            imovel.setEstado(cbEstado.getActionCommand());
+            imovel.setLogradouro(txtLogradouro.getText());
+            imovel.setNumero(Integer.parseInt(txtNumero.getText()));
+            imovel.setQuartos(Integer.parseInt(txtQuartos.getText()));
+            imovel.setSuites(Integer.parseInt(txtSuites.getText()));
+            imovel.setVagasGaragem(Integer.parseInt(txtVagasGaragem.getText()));
+            imovel.setValorAluguel(Float.parseFloat(txtValorAluguel.getText()));
+            imovel.setPrazoContrato(Integer.parseInt(txtPrazoContrato.getText()));
+            imovel.setCliente(cliente);
+            imovel.setDisponivel(true);
 
-        limpar();
+            FormPrincipal.daoAluguelImovel.alterarImovel(imovel);
+            JOptionPane.showMessageDialog(null, "Imóvel para locação atualizado com sucesso!", "Cadastro de imóvel para aluguel", JOptionPane.INFORMATION_MESSAGE);
+
+            limpar();
+        }
     }//GEN-LAST:event_btAtualizarActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
@@ -505,7 +557,7 @@ public class FormImovelAluguel extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowOpened
 
     private void btBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBuscarActionPerformed
-        if (tfCodigo.getText() != "") {
+        if (!tfCodigo.getText().equals("")) {
             cliente = FormPrincipal.daoCliente.buscarCliente(tfCodigo.getText());
             if (cliente != null) {
                 txrNomeProprietario.setText(cliente.getNome());

@@ -20,7 +20,8 @@ public class FormCliente extends javax.swing.JFrame {
      * Creates new form FormCliente
      */
     public FormCliente() {
-        initComponents();        
+        initComponents(); 
+       // jAtualizar.set
     }
 
     /**
@@ -33,7 +34,6 @@ public class FormCliente extends javax.swing.JFrame {
     private void initComponents() {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
-        tfCpf = new javax.swing.JTextField();
         tfNomeCompleto = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -42,7 +42,6 @@ public class FormCliente extends javax.swing.JFrame {
         pDadosPessoais = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        tfTelefone = new javax.swing.JTextField();
         tfEmail = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
@@ -51,6 +50,7 @@ public class FormCliente extends javax.swing.JFrame {
         rbDivorciado = new javax.swing.JRadioButton();
         rbUniaoEstavel = new javax.swing.JRadioButton();
         rbViuvo = new javax.swing.JRadioButton();
+        tfTelefone = new javax.swing.JFormattedTextField();
         pEnderecoCompleto = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         tfLogradouro = new javax.swing.JTextField();
@@ -66,10 +66,9 @@ public class FormCliente extends javax.swing.JFrame {
         jAtualizar = new javax.swing.JButton();
         jLimpar = new javax.swing.JButton();
         jSair = new javax.swing.JButton();
+        tfCpf = new javax.swing.JFormattedTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-
-        tfCpf.setText("   .   .   -  ");
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel1.setText("CPF:");
@@ -91,13 +90,6 @@ public class FormCliente extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel4.setText("Email:");
 
-        tfTelefone.setText("(  )    -");
-        tfTelefone.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tfTelefoneActionPerformed(evt);
-            }
-        });
-
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel5.setText("Estado Civil: ");
 
@@ -105,6 +97,7 @@ public class FormCliente extends javax.swing.JFrame {
 
         buttonGroup1.add(rbSolteiro);
         rbSolteiro.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        rbSolteiro.setSelected(true);
         rbSolteiro.setText("Solteiro");
         rbSolteiro.setActionCommand("Solteiro");
 
@@ -158,6 +151,12 @@ public class FormCliente extends javax.swing.JFrame {
                 .addContainerGap(20, Short.MAX_VALUE))
         );
 
+        try {
+            tfTelefone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##)####-####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
         javax.swing.GroupLayout pDadosPessoaisLayout = new javax.swing.GroupLayout(pDadosPessoais);
         pDadosPessoais.setLayout(pDadosPessoaisLayout);
         pDadosPessoaisLayout.setHorizontalGroup(
@@ -170,8 +169,8 @@ public class FormCliente extends javax.swing.JFrame {
                     .addGroup(pDadosPessoaisLayout.createSequentialGroup()
                         .addGroup(pDadosPessoaisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3)
-                            .addComponent(tfTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(60, 60, 60)
+                            .addComponent(tfTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(79, 79, 79)
                         .addGroup(pDadosPessoaisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel4)
                             .addComponent(tfEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE))))
@@ -186,9 +185,9 @@ public class FormCliente extends javax.swing.JFrame {
                     .addComponent(jLabel4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pDadosPessoaisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tfTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tfEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                    .addComponent(tfEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
                 .addComponent(jLabel5)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -260,7 +259,7 @@ public class FormCliente extends javax.swing.JFrame {
                 .addGroup(pEnderecoCompletoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tfCep, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cbEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         tbDadosCliente.addTab("Endereço Completo", pEnderecoCompleto);
@@ -301,12 +300,20 @@ public class FormCliente extends javax.swing.JFrame {
             }
         });
 
+        try {
+            tfCpf.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(167, 167, 167)
+                .addGap(19, 19, 19)
+                .addComponent(tfCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 29, 29)
                 .addComponent(tfNomeCompleto, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -314,12 +321,9 @@ public class FormCliente extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(30, 30, 30)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tfCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(93, 93, 93)
-                                .addComponent(jLabel2))))
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(93, 93, 93)
+                        .addComponent(jLabel2))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(10, 10, 10)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -360,58 +364,78 @@ public class FormCliente extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    
+    private boolean valida(){
+        if(tfCpf.getText().equals("") || tfCpf.getText().equals("   .   .   -  ")){
+            JOptionPane.showMessageDialog(null, "Campo CPF é obrigatório!", "Atenção", JOptionPane.WARNING_MESSAGE);
+            return false;
+        }
+        
+        if(tfNomeCompleto.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "Campo Nome Completo é obrigatório!", "Atenção", JOptionPane.WARNING_MESSAGE);
+            return false;
+        }
+        
+        return true;
+    }
+    
     private void btCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCadastrarActionPerformed
-         Cliente cliente = new Cliente();
+        if(valida()){
+            Cliente cliente = new Cliente();
         
-        //pegar os dados da tela e inserir no objeto
-        cliente.setCpf(tfCpf.getText());
-        cliente.setNome(tfNomeCompleto.getText());
-        cliente.setTelefone(tfTelefone.getText());
-        cliente.setEmail(tfEmail.getText());
-        cliente.setEstadocivil(buttonGroup1.getSelection().getActionCommand());
-        cliente.getEndereco().setLogradouro(tfLogradouro.getText());
-        cliente.getEndereco().setComplemento(tfComplemento.getText());
-        cliente.getEndereco().setCidade(tfCidade.getText());
-        cliente.getEndereco().setEstado(cbEstado.getSelectedItem().toString());
-        cliente.getEndereco().setCep(tfCep.getText());
         
-        FormPrincipal.daoCliente.adicionarCliente(cliente);
-        JOptionPane.showMessageDialog(null, "Cliente cadastrado com sucess", "Cadastro de cliente", JOptionPane.INFORMATION_MESSAGE);
-        
-        limpar();
+            //pegar os dados da tela e inserir no objeto
+            cliente.setCpf(tfCpf.getText());
+            cliente.setNome(tfNomeCompleto.getText());
+            cliente.setTelefone(tfTelefone.getText());
+            cliente.setEmail(tfEmail.getText());
+            cliente.setEstadocivil(buttonGroup1.getSelection().getActionCommand());
+            cliente.getEndereco().setLogradouro(tfLogradouro.getText());
+            cliente.getEndereco().setComplemento(tfComplemento.getText());
+            cliente.getEndereco().setCidade(tfCidade.getText());
+            cliente.getEndereco().setEstado(cbEstado.getSelectedItem().toString());
+            cliente.getEndereco().setCep(tfCep.getText());
+
+            FormPrincipal.daoCliente.adicionarCliente(cliente);
+            JOptionPane.showMessageDialog(null, "Cliente cadastrado com sucess", "Cadastro de cliente", JOptionPane.INFORMATION_MESSAGE);
+
+            limpar();
+        }
     }//GEN-LAST:event_btCadastrarActionPerformed
 
     private void jAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAtualizarActionPerformed
-        Cliente cliente = new Cliente();
-        
-        //pegar os dados da tela e inserir no objeto
-        cliente.setCpf(tfCpf.getText());
-        cliente.setNome(tfNomeCompleto.getText());
-        cliente.setTelefone(tfTelefone.getText());
-        cliente.setEmail(tfEmail.getText());
-        cliente.setEstadocivil(buttonGroup1.getSelection().getActionCommand());
-        cliente.getEndereco().setLogradouro(tfLogradouro.getText());
-        cliente.getEndereco().setComplemento(tfComplemento.getText());
-        cliente.getEndereco().setCidade(tfCidade.getText());
-        cliente.getEndereco().setEstado(cbEstado.getSelectedItem().toString());
-        cliente.getEndereco().setCep(tfCep.getText());
-        
-        FormPrincipal.daoCliente.adicionarCliente(cliente);
-        JOptionPane.showMessageDialog(null, "Cliente atualizado com sucesso!", "Cadastro de cliente", JOptionPane.INFORMATION_MESSAGE);
-        
-        limpar();
-    }//GEN-LAST:event_jAtualizarActionPerformed
+        if(valida()){
+            Cliente cliente = new Cliente();
 
-    private void tfTelefoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfTelefoneActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tfTelefoneActionPerformed
+
+            validarcampos();
+
+            //pegar os dados da tela e inserir no objeto
+            cliente.setCpf(tfCpf.getText());
+            cliente.setNome(tfNomeCompleto.getText());
+            cliente.setTelefone(tfTelefone.getText());
+            cliente.setEmail(tfEmail.getText());
+            cliente.setEstadocivil(buttonGroup1.getSelection().getActionCommand());
+            cliente.getEndereco().setLogradouro(tfLogradouro.getText());
+            cliente.getEndereco().setComplemento(tfComplemento.getText());
+            cliente.getEndereco().setCidade(tfCidade.getText());
+            cliente.getEndereco().setEstado(cbEstado.getSelectedItem().toString());
+            cliente.getEndereco().setCep(tfCep.getText());
+
+            FormPrincipal.daoCliente.adicionarCliente(cliente);
+            JOptionPane.showMessageDialog(null, "Cliente atualizado com sucesso!", "Cadastro de cliente", JOptionPane.INFORMATION_MESSAGE);
+
+            limpar();
+        }
+    }//GEN-LAST:event_jAtualizarActionPerformed
 
     private void btBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBuscarActionPerformed
         String cpf = tfCpf.getText();
         
         Cliente cliente = FormPrincipal.daoCliente.buscarCliente(cpf);
+//        System.out.println(cliente.getCpf());
         
-        if(cpf != null){
+        if(cpf != null && !cpf.equals("   .   .   -  ") && cliente != null){
             tfNomeCompleto.setText(cliente.getNome());
             tfTelefone.setText(cliente.getTelefone());
             tfEmail.setText(cliente.getEmail());
@@ -448,6 +472,32 @@ public class FormCliente extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jSairActionPerformed
     
+    private void validarcampos(){
+        if(tfCpf.getText() == null){
+            JOptionPane.showMessageDialog(null, "O campo CPF não pode ser vazio!");
+        }
+        if(tfNomeCompleto.getText() == null){
+            JOptionPane.showMessageDialog(null, "O campo Nome não pode ser vazio!");
+        }
+        if(tfTelefone.getText() == null && tfTelefone.getText().equals("(  )    -    ")){
+            JOptionPane.showMessageDialog(null, "O campo Telefone não pode ser vazio!");
+        } 
+        if(tfEmail.getText()== null){
+            JOptionPane.showMessageDialog(null, "O campo Email não pode ser vazio!");
+        }
+        if(tfLogradouro.getText() == null){
+            JOptionPane.showMessageDialog(null, "O campo Logradouro não pode ser vazio!");
+        }
+        if(tfComplemento.getText() == null){
+            JOptionPane.showMessageDialog(null, "O campo Complemento não pode ser vazio!");
+        }
+        if(tfCidade.getText() == null){
+            JOptionPane.showMessageDialog(null, "O campo Cidade não pode ser vazio!");
+        }
+        if(tfCidade.getText() == null){
+            JOptionPane.showMessageDialog(null, "O campo CEP não pode ser vazio!");
+        }
+    }
     private void limpar(){
                 tfNomeCompleto.setText("");
                 tfCpf.setText("");
@@ -531,10 +581,10 @@ public class FormCliente extends javax.swing.JFrame {
     private javax.swing.JTextField tfCep;
     private javax.swing.JTextField tfCidade;
     private javax.swing.JTextField tfComplemento;
-    private javax.swing.JTextField tfCpf;
+    private javax.swing.JFormattedTextField tfCpf;
     private javax.swing.JTextField tfEmail;
     private javax.swing.JTextField tfLogradouro;
     private javax.swing.JTextField tfNomeCompleto;
-    private javax.swing.JTextField tfTelefone;
+    private javax.swing.JFormattedTextField tfTelefone;
     // End of variables declaration//GEN-END:variables
 }
