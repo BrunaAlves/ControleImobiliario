@@ -506,6 +506,7 @@ public class RealizarVenda extends javax.swing.JFrame {
             venda.setImovel(imovel);
             venda.setDataVenda(data);
             venda.setNovoProprietario(novoProprietario);
+            JOptionPane.showMessageDialog(null, "Venda realizado com sucesso.", "Realizar Venda", JOptionPane.INFORMATION_MESSAGE);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Ocorreu um erro.", "Realizar Venda", JOptionPane.INFORMATION_MESSAGE);
         }

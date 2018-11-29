@@ -509,6 +509,7 @@ public class RealizarAluguel extends javax.swing.JFrame {
             aluguel.setImovel(imovel);
             aluguel.setDataAluguel(data);
             aluguel.setNovoProprietario(novoProprietario);
+            JOptionPane.showMessageDialog(null, "Aluguel realizado com sucesso.", "Realizar Aluguel", JOptionPane.INFORMATION_MESSAGE);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Ocorreu um erro.", "Realizar Aluguel", JOptionPane.INFORMATION_MESSAGE);
         }

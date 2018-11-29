@@ -37,7 +37,6 @@ public class FormImovelAluguel extends javax.swing.JFrame {
         btnSalvar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        tfCodigo = new javax.swing.JTextField();
         btBuscar = new javax.swing.JButton();
         tbDadosImovel = new javax.swing.JTabbedPane();
         pDadosImovel = new javax.swing.JPanel();
@@ -76,6 +75,7 @@ public class FormImovelAluguel extends javax.swing.JFrame {
         btAtualizar = new javax.swing.JButton();
         txrNomeProprietario = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
+        tfCodigo = new javax.swing.JFormattedTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -102,7 +102,7 @@ public class FormImovelAluguel extends javax.swing.JFrame {
         });
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel1.setText("CÓDIGO:");
+        jLabel1.setText("CPF:");
 
         btBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/icBuscarImovel.png"))); // NOI18N
         btBuscar.setText("Buscar");
@@ -341,17 +341,26 @@ public class FormImovelAluguel extends javax.swing.JFrame {
 
         jLabel3.setText("Nome Proprietário");
 
+        try {
+            tfCodigo.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(22, 22, 22)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(tfCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(45, 45, 45)
+                        .addGap(22, 22, 22)
+                        .addComponent(jLabel1)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(tfCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btBuscar)
                         .addGap(104, 104, 104)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -362,29 +371,30 @@ public class FormImovelAluguel extends javax.swing.JFrame {
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(btnSalvar)
-                .addGap(18, 18, 18)
-                .addComponent(btAtualizar)
-                .addGap(18, 18, 18)
-                .addComponent(btnCancelar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(25, 25, 25))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(tbDadosImovel, javax.swing.GroupLayout.PREFERRED_SIZE, 638, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(13, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnSalvar)
+                        .addGap(18, 18, 18)
+                        .addComponent(btAtualizar)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnCancelar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton1)
+                        .addGap(25, 25, 25))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(tbDadosImovel, javax.swing.GroupLayout.PREFERRED_SIZE, 638, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(13, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(11, 11, 11)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(tfCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btBuscar))
+                        .addComponent(btBuscar)
+                        .addComponent(tfCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -454,7 +464,7 @@ public class FormImovelAluguel extends javax.swing.JFrame {
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         if(valida()){
             ImovelAluguel imovel = new ImovelAluguel();
-            imovel.setTipo(jComboBox1.getActionCommand());
+            imovel.setTipo(jComboBox1.getSelectedItem().toString());
             imovel.setArea(Float.parseFloat(txtArea.getText()));
             imovel.setBairro(txtBairro.getText());
             imovel.setBanheiros(Integer.parseInt(txtBanheiros.getText()));
@@ -648,7 +658,7 @@ public class FormImovelAluguel extends javax.swing.JFrame {
     private javax.swing.JPanel pDadosImovel;
     private javax.swing.JPanel pEnderecoImovel;
     private javax.swing.JTabbedPane tbDadosImovel;
-    private javax.swing.JTextField tfCodigo;
+    private javax.swing.JFormattedTextField tfCodigo;
     private javax.swing.JTextField txrNomeProprietario;
     private javax.swing.JTextField txtArea;
     private javax.swing.JTextField txtBairro;
